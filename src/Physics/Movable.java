@@ -1,3 +1,6 @@
+package Physics;
+
+
 public interface Movable {
 
     public static final double gravity = 9.81;

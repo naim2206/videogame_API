@@ -1,6 +1,8 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
+package Physics;
+
 
 public class RectObj extends Collisionable {
     private double width;

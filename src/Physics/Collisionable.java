@@ -1,6 +1,7 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
+package Physics;
 
 public abstract class Collisionable {
     private int x;
