@@ -4,7 +4,7 @@
 package Physics;
 
 
-public class RectObj extends Collisionable {
+public abstract class RectObj extends Collisionable {
     private double width;
     private double height;
 
