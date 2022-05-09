@@ -8,8 +8,42 @@ public class Game1{
 	
 	
 	
+	public static void Init() {
+		Window Ventana = new Window("Jueguito", 500,700, Color.CYAN);
+		
+		Box Box1
+		Boulder
+		etc...
+		
+		Ventana.add(Box);
+		
+	}
+	
+	public static void Update() {
+		
+		//Update del programador?????
+		
+		
+		Ventana.update();
+		
+	}
+	
+	
+	
+	
+	
+	
 	public static void Run(){
-	Window Ventana = new Window("Jueguito", 500,700, Color.CYAN);
+	
+		Init();
+	
+	
+	While(true){
+		
+		
+		
+		
+	}
 	
 	
 	}
@@ -21,6 +55,7 @@ public class Game1{
 	public static void main(String[] args) {
 		
 		Run();
+		
 	}
 	
 }
