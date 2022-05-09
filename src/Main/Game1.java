@@ -23,7 +23,7 @@ public class Game1{
 		
 		//Update del programador?????
 		
-		
+		//Comentario 2 para la branch
 		Ventana.update();
 		
 	}
