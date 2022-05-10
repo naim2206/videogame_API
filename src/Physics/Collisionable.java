@@ -3,6 +3,11 @@
 // 
 package Physics;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import Loader.Assets;
+
 public abstract class Collisionable {
     private int x;
     private int y;
@@ -13,12 +18,14 @@ public abstract class Collisionable {
     private double accX;
     private double accY;
     private final Material material;
+    
+    protected BufferedImage texture;
 
     public Collisionable(int x, int y) {
-        this(x, y, 20.0, Material.Wood);
+        this(x, y, 20.0, Material.Wood, Assets.WoodBox);
     }
 
-    public Collisionable(int x, int y, double weight, Material material) {
+    public Collisionable(int x, int y, double weight, Material material, BufferedImage texture) {
         this.velX = 0.0;
         this.velY = 0.0;
         this.accX = 0.0;
@@ -30,8 +37,8 @@ public abstract class Collisionable {
     }
 
     public Collisionable(int x, int y, double weight, Material material, double velX, double velY, double accX,
-            double accY) {
-        this(x, y, weight, material);
+            double accY,  BufferedImage texture) {
+        this(x, y, weight, material, texture);
         this.setVelX(velX);
         this.setVelY(velY);
         this.setAccX(accX);
@@ -41,6 +48,10 @@ public abstract class Collisionable {
     public abstract boolean checkCollision(Collisionable p0);
 
     public abstract void impact(Collisionable p0);
+    
+    public abstract void update();
+    
+    public abstract void draw(Graphics g);
 
     public int getX() {
         return this.x;

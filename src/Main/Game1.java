@@ -11,11 +11,6 @@ public class Game1{
 	public static void Init() {
 		Window Ventana = new Window("Jueguito", 500,700, Color.CYAN);
 		
-		Box Box1
-		Boulder
-		etc...
-		
-		Ventana.add(Box);
 		
 	}
 	
@@ -24,7 +19,7 @@ public class Game1{
 		//Update del programador?????
 		
 		//Comentario 2 para la branch
-		Ventana.update();
+		//Ventana.update();
 		
 	}
 	
@@ -37,14 +32,14 @@ public class Game1{
 	
 		Init();
 	
-	
+	/*
 	While(true){
 		
 		
 		
 		
 	}
-	
+	*/
 	
 	}
 	

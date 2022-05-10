@@ -1,6 +1,7 @@
 package Graphics;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -10,7 +11,7 @@ public class Canvas extends JPanel {
 	public Canvas(Color color) {
 		
 		this.setBackground(color); //Asigna el fondo que recibe del constructor
-		
+		this.setFocusable(true); //Canvas puede ser objetivo de entradas de mouse/teclado
 	}
 	
 	

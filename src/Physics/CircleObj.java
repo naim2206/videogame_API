@@ -1,27 +1,26 @@
-// 
-// Decompiled by Procyon v0.5.36
-// 
 package Physics;
 
-public class CircleObj extends Collisionable {
+import java.awt.image.BufferedImage;
+
+public abstract class CircleObj extends Collisionable {
 
     private double radius;
 
     public CircleObj(int x, int y, double weight, Material material, double velX,
-            double velY, double accX, double accY, double radius) {
-        super(x, y, weight, material, velX, velY, accX, accY);
+            double velY, double accX, double accY, double radius, BufferedImage texture) {
+        super(x, y, weight, material, velX, velY, accX, accY, texture);
 
         this.setRadius(radius);
     }
 
-    public CircleObj(int x, int y, double weight, Material material, double radius) {
-        super(x, y, weight, material);
+    public CircleObj(int x, int y, double weight, Material material, double radius, BufferedImage texture) {
+        super(x, y, weight, material, texture);
         this.setRadius(radius);
     }
 
-    public CircleObj(int x, int y, double weight, double ratius) {
+    public CircleObj(int x, int y, double weight, double ratius, BufferedImage texture) {
         super(x, y);
-
+        this.texture = texture;
         this.setRadius(radius);
     }
 

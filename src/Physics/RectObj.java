@@ -1,31 +1,30 @@
-// 
-// Decompiled by Procyon v0.5.36
-// 
 package Physics;
 
+import java.awt.image.BufferedImage;
 
 public abstract class RectObj extends Collisionable {
     private double width;
     private double height;
 
     public RectObj(int x, int y, double weight, Material material, double velX,
-            double velY, double accX, double accY, double width, double height) {
-        super(x, y, weight, material, velX, velY, accX, accY);
+            double velY, double accX, double accY, double width, double height, BufferedImage texture) {
+        super(x, y, weight, material, velX, velY, accX, accY, texture);
         this.setWidth(width);
         this.setHeight(height);
     }
 
     public RectObj(int x, int y, double weight, Material material, double width,
-            double height) {
-        super(x, y, weight, material);
+            double height, BufferedImage texture) {
+        super(x, y, weight, material, texture);
         this.setWidth(width);
         this.setHeight(height);
     }
 
-    public RectObj(int x, int y, double weight, double width, double height) {
+    public RectObj(int x, int y, double weight, double width, double height, BufferedImage texture) {
         super(x, y);
         this.setWidth(width);
         this.setHeight(height);
+        this.texture = texture;
     }
 
     public boolean checkCollision(Collisionable obj) {
