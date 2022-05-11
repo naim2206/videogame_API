@@ -53,7 +53,7 @@ public class Bolder extends CircleObj implements Movable {
     }
 
     @Override
-    public void stop(boolean status) {
+    public void stop() {
         this.setAccX(getAccX() - 1);
     }
 

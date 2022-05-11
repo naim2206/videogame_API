@@ -9,6 +9,6 @@ public interface Movable {
 
     public void fall();
 
-    public void stop(boolean status);
+    public void stop();
 
 }

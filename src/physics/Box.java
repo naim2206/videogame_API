@@ -72,16 +72,13 @@ public class Box extends RectObj implements Movable {
     }
 
     @Override
-    public void stop(boolean status) {
-        if (!status) {
-            double friction = FRICC_FLOOR * this.getWeight();
-            if (this.getVelX() > 0) {
-                this.setAccX(this.getAccX() - friction);
-            } else if (this.getVelX() < 0) {
-                this.setAccX(this.getAccX() + friction);
-            }
+    public void stop() {
+        double friction = FRICC_FLOOR * this.getWeight();
+        if (this.getVelX() > 0) {
+            this.setAccX(this.getAccX() - friction);
+        } else if (this.getVelX() < 0) {
+            this.setAccX(this.getAccX() + friction);
         }
-
     }
 
     @Override
