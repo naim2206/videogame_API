@@ -1,4 +1,4 @@
-package Physics;
+package physics;
 
 import java.awt.image.BufferedImage;
 
@@ -74,7 +74,7 @@ public abstract class CircleObj extends Collisionable {
         double dx = this.getX() - obj.getX(); // X distance between centers
         double dy = this.getY() - obj.getY(); // Y distance between centers
 
-        double distance = Math.sqrt(dx * dx + dy * dy); // Distance between centers
+        double distance = Math.sqrt(dx * dx + dy * dy); // Distance between centers -- Magnitude of Vect A - B
 
         if (distance <= (this.getRadius() + obj.getRadius()))
             collision = true;

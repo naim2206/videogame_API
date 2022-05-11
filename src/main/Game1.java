@@ -1,8 +1,8 @@
-package Main;
+package main;
 
 import java.awt.Color;
 
-import Graphics.Window;
+import graphics.Window;
 
 public class Game1{
 	

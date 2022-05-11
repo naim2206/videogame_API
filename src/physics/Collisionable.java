@@ -1,12 +1,12 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
-package Physics;
+package physics;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import Loader.Assets;
+import loader.Assets;
 
 public abstract class Collisionable {
     private int x;

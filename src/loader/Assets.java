@@ -1,10 +1,13 @@
-package Loader;
+package loader;
 
 import java.awt.image.BufferedImage;
 
-import Loader.Loader;
+import loader.Loader;
 
 public class Assets {
+	
+	//BufferedImage image = Scalr.resize(originalImage, Scalr.Method.BALANCED, newWidth, newHeight); //RESIZE OBJ
+    
 	
 	//Materials Objs
 	//Wood

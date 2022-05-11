@@ -1,4 +1,4 @@
-package Physics;
+package physics;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
