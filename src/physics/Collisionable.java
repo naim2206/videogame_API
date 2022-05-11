@@ -42,6 +42,9 @@ public abstract class Collisionable {
 
     public abstract void impact(Collisionable p0);
 
+    // public abstract void break();
+    public abstract void breakObject();
+
     public int getX() {
         return this.x;
     }

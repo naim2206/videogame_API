@@ -86,4 +86,8 @@ public class CircleObj extends Collisionable {
     @Override
     public void impact(Collisionable obj) {
     }
+
+    public void breakObject() {
+
+    }
 }

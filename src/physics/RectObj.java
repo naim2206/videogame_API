@@ -3,7 +3,6 @@
 // 
 package Physics;
 
-
 public abstract class RectObj extends Collisionable {
     private double width;
     private double height;
@@ -73,6 +72,11 @@ public abstract class RectObj extends Collisionable {
     }
 
     public void impact(Collisionable obj) {
+        // TODO
+    }
+
+    public void breakObject() {
+        // TODO
     }
 
     public double getWidth() {
