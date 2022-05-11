@@ -1,7 +1,6 @@
 package physics;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import loader.Assets;
 
@@ -86,17 +85,9 @@ public class Box extends RectObj implements Movable {
     }
 
     @Override
-    public boolean statusAir(ArrayList<Collisionable> objectsInGame) {
-        for (Collisionable obj : objectsInGame)
-            if (this.checkCollision(obj))
-                return true;
-        return false;
-    }
-
-    @Override
     public void update() {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

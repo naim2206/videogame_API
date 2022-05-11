@@ -1,7 +1,5 @@
 package physics;
 
-import java.util.ArrayList;
-
 public interface Movable {
 
     public static final double GRAVITY = -9.81;
@@ -13,5 +11,4 @@ public interface Movable {
 
     public void stop(boolean status);
 
-    public boolean statusAir(ArrayList<Collisionable> objectsInGame);
 }

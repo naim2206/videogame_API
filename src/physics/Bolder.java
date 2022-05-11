@@ -1,7 +1,5 @@
 package physics;
 
-import java.util.ArrayList;
-
 import loader.Assets;
 
 import java.awt.image.BufferedImage;
@@ -57,11 +55,6 @@ public class Bolder extends CircleObj implements Movable {
     @Override
     public void stop(boolean status) {
         this.setAccX(getAccX() - 1);
-    }
-
-    @Override
-    public boolean statusAir(ArrayList<Collisionable> objectsInGame) {
-        return false;
     }
 
 }
