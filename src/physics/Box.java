@@ -1,36 +1,75 @@
-package physics;
+package Physics;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+public class Box extends RectObj implements Movable {
 
-public class Box extends RectObj {
+    /**
+     * @param x
+     * @param y
+     * @param weight
+     * @param material
+     * @param velX
+     * @param velY
+     * @param accX
+     * @param accY
+     * @param width
+     * @param height
+     */
+    public Box(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
+            double width, double height) {
+        super(x, y, weight, material, velX, velY, accX, accY, width, height);
+    }
 
-	public Box(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
-			double width, double height, BufferedImage texture) {
-		super(x, y, weight, material, velX, velY, accX, accY, width, height, texture);
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * @param x
+     * @param y
+     * @param weight
+     * @param material
+     * @param width
+     * @param height
+     */
+    public Box(int x, int y, double weight, Material material, double width, double height) {
+        super(x, y, weight, material, width, height);
+    }
 
-	public Box(int x, int y, double weight, Material material, double width, double height, BufferedImage texture) {
-		super(x, y, weight, material, width, height, texture);
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * @param x
+     * @param y
+     * @param weight
+     * @param width
+     * @param height
+     */
+    public Box(int x, int y, double weight, double width, double height) {
+        super(x, y, weight, width, height);
+    }
 
-	public Box(int x, int y, double weight, double width, double height, BufferedImage texture) {
-		super(x, y, weight, width, height, texture);
-		// TODO Auto-generated constructor stub
-	}
+    @Override
+    public void move() {
+        this.setX(Math.round((float) (this.getX() + this.getVelX())));
+        this.setY(Math.round((float) (this.getY() + this.getVelY())));
+    }
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+    @Override
+    public void fall() {
+        this.setVelX(getVelX() + GRAVITY);
+    }
 
-	}
+    @Override
+    public void stop() {
+        if (!statusAir()) {
+            double friction = FRICC_FLOOR * this.getWeight();
+            if (this.getVelX() > 0) {
+                this.setAccX(this.getAccX() - friction);
+            } else if (this.getVelX() < 0) {
+                this.setAccX(this.getAccX() + friction);
+            }
+        }
 
-	@Override
-	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+    }
 
-	}
+    @Override
+    public boolean statusAir() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }
