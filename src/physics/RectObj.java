@@ -71,10 +71,6 @@ public abstract class RectObj extends Collisionable {
         return (cornerDistanceSq <= (obj.getRadius() * obj.getRadius()));
     }
 
-    public void impact(Collisionable obj) {
-        // TODO
-    }
-
     public double getWidth() {
         return this.width;
     }

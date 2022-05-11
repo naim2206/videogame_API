@@ -42,7 +42,22 @@ public abstract class Collisionable {
 
     public abstract boolean checkCollision(Collisionable p0);
 
-    public abstract void impact(Collisionable p0);
+    public static void impact(Collisionable one, Collisionable two) {
+        double oneMass = one.getWeight() / 9.81;
+        double twoMass = two.getWeight() / 9.81;
+        double prevOneVelX = one.getVelX();
+        double prevOneVelY = one.getVelY();
+
+        one.setVelX(
+                ((one.getVelX()) * ((oneMass / twoMass) - 1) + (2 * two.getVelX())) / (1 + (oneMass / twoMass)));
+        one.setVelY(
+                ((one.getVelY()) * ((oneMass / twoMass) - 1) + (2 * two.getVelY())) / (1 + (oneMass / twoMass)));
+
+        two.setVelX(
+                prevOneVelX + one.getVelX() - two.getVelX());
+        two.setVelY(
+                prevOneVelY + one.getVelY() - two.getVelY());
+    }
 
     public boolean breakObject(Collisionable p0) {
         if (this.material == Material.Stone)
@@ -114,5 +129,7 @@ public abstract class Collisionable {
     public Material getMaterial() {
         return this.material;
     }
+
+    public abstract void update();
 
 }

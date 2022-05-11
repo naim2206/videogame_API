@@ -84,7 +84,9 @@ public class CircleObj extends Collisionable {
     }
 
     @Override
-    public void impact(Collisionable obj) {
+    public void update() {
+        // TODO Auto-generated method stub
+
     }
 
 }

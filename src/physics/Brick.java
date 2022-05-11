@@ -60,4 +60,10 @@ public class Brick extends RectObj {
         super(x, y, weight, width, height);
     }
 
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+
+    }
+
 }
