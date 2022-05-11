@@ -22,8 +22,10 @@ public class Assets {
 	public static void init() {
 
 		WoodBox = Loader.ImageLoader("/Wood/wood_box.png");
+		WoodBox = Loader.ImageLoader("/Wood/woodBrick.png");
 		Boulder = Loader.ImageLoader("/Stone/boulder.png");
 		StoneBrick = Loader.ImageLoader("/Stone/brick.png");
-
+		StoneBox = Loader.ImageLoader("/Stone/stoneBox.png");
+		
 	}
 }
