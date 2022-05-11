@@ -7,15 +7,15 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame{
 	
-	private final int  width;
-	private final int  height;
+	private static int  width;
+	private static int  height;
 	
 	private Canvas panel;
 	//private Hilo hilo;
 	
 	public Window(String title, int width, int height, Color background) { //Recibe titulo y tama�o del frame
-		this.width = width;
-		this.height = height;
+		width = width;
+		height = height;
 		
 		
 		super.setTitle(title); //Asigna el titulo al frame
