@@ -1,9 +1,7 @@
 // 
 // Decompiled by Procyon v0.5.36
-// ola pa
 // 
 package Physics;
-// esto a donde va?
 
 public class CircleObj extends Collisionable {
 
@@ -87,5 +85,9 @@ public class CircleObj extends Collisionable {
 
     @Override
     public void impact(Collisionable obj) {
+    }
+
+    public void breakObject() {
+
     }
 }
