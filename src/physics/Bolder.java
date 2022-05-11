@@ -1,42 +1,46 @@
-package Physics;
+package physics;
+
+import java.util.ArrayList;
+
+import loader.Assets;
+
+import java.awt.image.BufferedImage;
 
 public class Bolder extends CircleObj implements Movable {
+
+    private BufferedImage texture = Assets.Boulder;
 
     /**
      * @param x
      * @param y
      * @param weight
-     * @param material
      * @param velX
      * @param velY
      * @param accX
      * @param accY
      * @param radius
      */
-    public Bolder(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
+    public Bolder(int x, int y, double weight, double velX, double velY, double accX, double accY,
             double radius) {
-        super(x, y, weight, material, velX, velY, accX, accY, radius);
+        super(x, y, weight, Material.Stone, velX, velY, accX, accY, radius);
+    }
+
+    public BufferedImage getTexture() {
+        return texture;
+    }
+
+    public void setTexture(BufferedImage texture) {
+        this.texture = texture;
     }
 
     /**
      * @param x
      * @param y
      * @param weight
-     * @param material
      * @param radius
      */
-    public Bolder(int x, int y, double weight, Material material, double radius) {
-        super(x, y, weight, material, radius);
-    }
-
-    /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param ratius
-     */
-    public Bolder(int x, int y, double weight, double ratius) {
-        super(x, y, weight, ratius);
+    public Bolder(int x, int y, double weight, double radius) {
+        super(x, y, weight, Material.Stone, radius);
     }
 
     @Override
@@ -47,15 +51,16 @@ public class Bolder extends CircleObj implements Movable {
 
     @Override
     public void fall() {
-        this.setVelX(getVelX() + GRAVITY);
+        this.setVelY(getVelY() + GRAVITY);
     }
 
     @Override
-    public void stop() {
+    public void stop(boolean status) {
+        this.setAccX(getAccX() - 1);
     }
 
     @Override
-    public boolean statusAir() {
+    public boolean statusAir(ArrayList<Collisionable> objectsInGame) {
         return false;
     }
 

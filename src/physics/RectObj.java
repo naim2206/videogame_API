@@ -1,7 +1,7 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
-package Physics;
+package physics;
 
 public abstract class RectObj extends Collisionable {
     private double width;
@@ -72,10 +72,6 @@ public abstract class RectObj extends Collisionable {
     }
 
     public void impact(Collisionable obj) {
-        // TODO
-    }
-
-    public void breakObject() {
         // TODO
     }
 

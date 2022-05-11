@@ -1,7 +1,7 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
-package Physics;
+package physics;
 
 public abstract class Collisionable {
     private int x;
@@ -13,6 +13,8 @@ public abstract class Collisionable {
     private double accX;
     private double accY;
     private final Material material;
+    public static final int WOOD_BREAK_SPEED = 100;
+    public static final int STONE_BREAK_SPEED = 25;
 
     public Collisionable(int x, int y) {
         this(x, y, 20.0, Material.Wood);
@@ -42,8 +44,20 @@ public abstract class Collisionable {
 
     public abstract void impact(Collisionable p0);
 
-    // public abstract void break();
-    public abstract void breakObject();
+    public boolean breakObject(Collisionable p0) {
+        if (this.material == Material.Stone)
+            return false;
+        if (p0.material == Material.Wood) {
+            // no se rompe mucho
+            if (this.getVelX() + this.getVelY() + p0.getVelX() + p0.getVelY() > WOOD_BREAK_SPEED)
+                return true;
+            return false;
+        }
+        // se rompe bastante
+        if (this.getVelX() + this.getVelY() + p0.getVelX() + p0.getVelY() > STONE_BREAK_SPEED)
+            return true;
+        return false;
+    }
 
     public int getX() {
         return this.x;

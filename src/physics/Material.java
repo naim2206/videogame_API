@@ -1,7 +1,7 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
-package Physics;
+package physics;
 
 
 public enum Material {

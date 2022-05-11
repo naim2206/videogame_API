@@ -1,7 +1,7 @@
 // 
 // Decompiled by Procyon v0.5.36
 // 
-package Physics;
+package physics;
 
 public class CircleObj extends Collisionable {
 
@@ -19,7 +19,7 @@ public class CircleObj extends Collisionable {
         this.setRadius(radius);
     }
 
-    public CircleObj(int x, int y, double weight, double ratius) {
+    public CircleObj(int x, int y, double weight, double radius) {
         super(x, y);
 
         this.setRadius(radius);
@@ -87,7 +87,4 @@ public class CircleObj extends Collisionable {
     public void impact(Collisionable obj) {
     }
 
-    public void breakObject() {
-
-    }
 }

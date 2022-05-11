@@ -1,6 +1,12 @@
-package Physics;
+package physics;
+
+import java.awt.image.BufferedImage;
+
+import loader.Assets;
 
 public class Brick extends RectObj {
+
+    private BufferedImage texture = Assets.WoodBrick;
 
     /**
      * @param x
@@ -17,6 +23,16 @@ public class Brick extends RectObj {
     public Brick(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
             double width, double height) {
         super(x, y, weight, material, velX, velY, accX, accY, width, height);
+        if (material == Material.Stone)
+            this.setTexture(Assets.StoneBrick);
+    }
+
+    public BufferedImage getTexture() {
+        return texture;
+    }
+
+    public void setTexture(BufferedImage texture) {
+        this.texture = texture;
     }
 
     /**
@@ -29,6 +45,8 @@ public class Brick extends RectObj {
      */
     public Brick(int x, int y, double weight, Material material, double width, double height) {
         super(x, y, weight, material, width, height);
+        if (material == Material.Stone)
+            this.setTexture(Assets.StoneBrick);
     }
 
     /**

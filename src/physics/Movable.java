@@ -1,6 +1,8 @@
-package Physics;
+package physics;
 
-public interface Movab
+import java.util.ArrayList;
+
+public interface Movable {
 
     public static final double GRAVITY = -9.81;
     public static final double FRICC_FLOOR = 0.4;
@@ -9,7 +11,7 @@ public interface Movab
 
     public void fall();
 
-    public void stop();
+    public void stop(boolean status);
 
-    public boolean statusAir();
+    public boolean statusAir(ArrayList<Collisionable> objectsInGame);
 }

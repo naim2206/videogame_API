@@ -13,22 +13,22 @@ public class Window extends JFrame{
 	private Canvas panel;
 	//private Hilo hilo;
 	
-	public Window(String title, int width, int height, Color background) { //Recibe titulo y tamaño del frame
+	public Window(String title, int width, int height, Color background) { //Recibe titulo y tamaï¿½o del frame
 		this.width = width;
 		this.height = height;
 		
 		
 		super.setTitle(title); //Asigna el titulo al frame
-		super.setSize(this.width,this.height); //asigna tamaño al frame
+		super.setSize(this.width,this.height); //asigna tamaï¿½o al frame
 		super.setLocationRelativeTo(null); // frame se crea en el centro de la pantalla
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Cerrar ventana al darle a la X
-		super.setResizable(false); //No se puede alterar el tamaño con el mouse
+		super.setResizable(false); //No se puede alterar el tamaï¿½o con el mouse
 		
 		
 		panel = new Canvas(background);
 		super.add(panel);
 		panel.setVisible(true); //Muestra el canvas
-		panel.setPreferredSize(new Dimension(this.width,this.height)); //tamaño canvas
+		panel.setPreferredSize(new Dimension(this.width,this.height)); //tamaï¿½o canvas
 		panel.setMaximumSize(new Dimension(this.width,this.height));
 		panel.setMinimumSize(new Dimension(this.width,this.height));
 		
