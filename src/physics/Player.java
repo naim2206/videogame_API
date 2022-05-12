@@ -1,12 +1,12 @@
 package physics;
 
+
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import graphics.Window;
 
 public abstract class Player extends CircleObj implements Movable{
 	
@@ -41,21 +41,35 @@ public abstract class Player extends CircleObj implements Movable{
 	}
 	
 	public void stop() {
-		this.setAccX(getAccX()-1);	
+		this.setAccX(getAccX()-.001);	
 	}
 	
 	public void move() {
+		
+		this.setVelX(getVelX() + getAccX());
+		this.setVelY(getVelY() + getAccY());
+		
 		this.setX(Math.round((float) (this.getX() + this.getVelX())));
 	    this.setY(Math.round((float) (this.getY() + this.getVelY())));
+	    
+	    System.out.println(Math.round((float) (this.getX() + this.getVelX())));
+	    System.out.printf("Moving X = %d Y = %d\n", getX(),getY());
+	    System.out.printf("Vel X = %f, Y = %f\n", getVelX(),getVelY());
 	}
 
 	
 	public void update(ArrayList<Collisionable> colObjects) {
 		boolean status = true; //Air status
-		moveByPlayer();
-		move();		
+		this.moveByPlayer();
+				
 		
 		for(Collisionable c: colObjects) {
+			
+			if(c.equals(this)) {
+				fall();
+				continue;
+			}
+			
 			if(this.checkCollision(c) ) {
 				status = false;
 				
@@ -64,14 +78,17 @@ public abstract class Player extends CircleObj implements Movable{
 					destroyPlayer(colObjects);
 				}
 				else {
-					this.impact(c);
+					impact(this,c);
 				}
 
 			}
 			
 			fall();
+		
+			
 			
 		}
+		this.move();
 		
 		stop();
 		
@@ -87,6 +104,7 @@ public abstract class Player extends CircleObj implements Movable{
 		
 		AffineTransform at = AffineTransform.getTranslateInstance((double)getX(), (double)getY());
 		
+		/* 
 		if( this.getAccX() > 0) {
 			angle += 0.1;
 			at.rotate(angle, getRadius(), getRadius());
@@ -96,7 +114,7 @@ public abstract class Player extends CircleObj implements Movable{
 			angle -= 0.1;
 			at.rotate(angle, getRadius(), getRadius());
 		}
-	
+		*/
 		g2d.drawImage(texture, at, null);
 		
 	}

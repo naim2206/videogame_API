@@ -5,17 +5,20 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import input.Keyboard;
+
 public class Window extends JFrame{
 	
 	private static int  width;
 	private static int  height;
 	
 	private Canvas panel;
+	private Keyboard keyboard;
 	//private Hilo hilo;
 	
 	public Window(String title, int width, int height, Color background) { //Recibe titulo y tamaï¿½o del frame
-		width = width;
-		height = height;
+		this.width = width;
+		this.height = height;
 		
 		
 		super.setTitle(title); //Asigna el titulo al frame
@@ -26,19 +29,24 @@ public class Window extends JFrame{
 		
 		
 		panel = new Canvas(background);
-		super.add(panel);
+		keyboard = new Keyboard();
+		
+		
 		panel.setVisible(true); //Muestra el canvas
-		panel.setPreferredSize(new Dimension(this.width,this.height)); //tamaï¿½o canvas
+		panel.setPreferredSize(new Dimension(this.width,this.height)); //tamaño canvas
 		panel.setMaximumSize(new Dimension(this.width,this.height));
 		panel.setMinimumSize(new Dimension(this.width,this.height));
 		
+		this.add(panel);
 		
-		
+		panel.addKeyListener(keyboard);
 		
 		//hilo = new Hilo(panel);
 		//hilo.start();
 		
 		this.setVisible(true); //Muestra la ventana
+		
+		
 	}
 	
 	
@@ -53,5 +61,12 @@ public class Window extends JFrame{
 		return height;
 	}
 	
+	public Keyboard getKeyboard() {
+		return this.keyboard;
+	}
+	
+	public Canvas getCanvas() {
+		return panel;
+	}
 	
 }

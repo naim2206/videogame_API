@@ -3,6 +3,9 @@
 // 
 package physics;
 
+import java.awt.Graphics;
+import java.util.ArrayList;
+
 public abstract class Collisionable {
     private int x;
     private int y;
@@ -130,6 +133,8 @@ public abstract class Collisionable {
         return this.material;
     }
 
-    public abstract void update();
+    public abstract void update(ArrayList<Collisionable> colObjects);
+    
+    public abstract void draw(Graphics g);
 
 }
