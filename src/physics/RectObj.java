@@ -36,14 +36,38 @@ public abstract class RectObj extends Collisionable {
         return obj instanceof CircleObj && this.checkCollisionCircle((CircleObj) obj);
     }
 
+    // private boolean checkCollisionRect(RectObj obj) {
+    // boolean collision = false;
+    // if (this.getX() < obj.getX() + obj.getWidth() && this.getX() +
+    // this.getWidth() > obj.getX()
+    // && this.getY() < obj.getY() + obj.getHeight() && this.getY() +
+    // this.getHeight() > obj.getY()) {
+    // collision = true;
+    // }
+    // return collision;
+    // }
+
+    // a ver si jala
     private boolean checkCollisionRect(RectObj obj) {
+        return this.checkCollisionRectX(obj) && this.checkCollisionRectY(obj);
+    }
+
+    public boolean checkCollisionRectX(RectObj obj) {
         boolean collision = false;
-        if (this.getX() < obj.getX() + obj.getWidth() && this.getX() + this.getWidth() > obj.getX()
-                && this.getY() < obj.getY() + obj.getHeight() && this.getY() + this.getHeight() > obj.getY()) {
+        if (this.getX() < obj.getX() + obj.getWidth() && this.getX() + this.getWidth() > obj.getX()) {
             collision = true;
         }
         return collision;
     }
+
+    public boolean checkCollisionRectY(RectObj obj) {
+        boolean collision = false;
+        if (this.getY() < obj.getY() + obj.getHeight() && this.getY() + this.getHeight() > obj.getY()) {
+            collision = true;
+        }
+        return collision;
+    }
+    // hasta aki
 
     private boolean checkCollisionCircle(CircleObj obj) {
         int recCenterX = (int) (this.getX() + this.getWidth() / 2.0);

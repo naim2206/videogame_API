@@ -5,6 +5,8 @@ package physics;
 
 import java.awt.Graphics;
 
+import org.w3c.dom.css.Rect;
+
 import states.GameState;
 
 public abstract class Collisionable {
@@ -17,8 +19,8 @@ public abstract class Collisionable {
     private double accX;
     private double accY;
     private final Material material;
-    public static final double WOOD_BREAK_SPEED = 20;
-    public static final double STONE_BREAK_SPEED = 7;
+    public static final double WOOD_BREAK_SPEED = 120;
+    public static final double STONE_BREAK_SPEED = 170;
 
     protected GameState gameState;
 
@@ -70,11 +72,14 @@ public abstract class Collisionable {
         }
 
         if (one instanceof Movable) {
+
             one.setVelX(one.getVelX() * -1);
             one.setVelY(one.getVelY() * -1);
         }
 
-        else if (two instanceof Movable) {
+        else if (two instanceof Movable)
+
+        {
             two.setVelX(two.getVelX() * -1);
             two.setVelY(two.getVelY() * -1);
         }

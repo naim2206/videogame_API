@@ -68,39 +68,41 @@ public class Brick extends RectObj {
     }
 
     public void destroyBrick(ArrayList<Collisionable> colObjects) {
-		colObjects.remove(this);
-	}
+        colObjects.remove(this);
+    }
 
-    
-	@Override
-	public void update() {		
-			for(Collisionable c: gameState.getColObjects()) {
-				if(c.equals(this)) {
-					continue;
-				}
-				
-				if(this.checkCollision(c) ) {
-					if(this.breakObject(c)) {
-						destroyBrick(gameState.getColObjects());
-					}
-					else {
-						impact(this,c);
-					}
+    @Override
+    public void update() {
+        for (Collisionable c : gameState.getColObjects()) {
+            if (c.equals(this)) {
+                continue;
+            }
 
-				}		
-			}
-		
-	}
+            if (this.checkCollision(c)) {
+                if (this.breakObject(c)) {
+                    destroyBrick(gameState.getColObjects());
+                } else {
+                    impact(this, c);
+                }
 
-	@Override
-	public void draw(Graphics g) {
-		Graphics2D g2d = (Graphics2D)g;
-		
-		AffineTransform at = AffineTransform.getTranslateInstance((double)getX(), (double)getY());
-		
-		texture = Loader.resize(texture, (int)getWidth(), (int)getHeight());
-		
-		g2d.drawImage(texture, at, null);
-	}
+            }
+        }
+
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+
+        AffineTransform at = AffineTransform.getTranslateInstance((double) getX(),
+                (double) getY());
+        // AffineTransform at = AffineTransform.getTranslateInstance((double) getX() +
+        // getWidth() / 2,
+        // (double) getY() + getHeight() / 2);
+
+        texture = Loader.resize(texture, (int) getWidth(), (int) getHeight());
+
+        g2d.drawImage(texture, at, null);
+    }
 
 }

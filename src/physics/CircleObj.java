@@ -7,7 +7,7 @@ import java.awt.Graphics;
 
 import states.GameState;
 
-public class CircleObj extends Collisionable {
+public abstract class CircleObj extends Collisionable {
 
     private double radius;
 
@@ -87,17 +87,16 @@ public class CircleObj extends Collisionable {
         return collision;
     }
 
+    // @Override
+    // public void update() {
+    // // TODO Auto-generated method stub
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+    // }
 
-	@Override
-	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
-	}
+    // @Override
+    // public void draw(Graphics g) {
+    // // TODO Auto-generated method stub
+
+    // }
 
 }

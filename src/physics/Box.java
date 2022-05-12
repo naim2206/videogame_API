@@ -11,8 +11,7 @@ import loader.Loader;
 import states.GameState;
 
 public class Box extends RectObj implements Movable {
-	
-	
+
     private BufferedImage texture = Assets.WoodBox;
 
     /**
@@ -75,7 +74,7 @@ public class Box extends RectObj implements Movable {
 
     @Override
     public void fall() {
-        this.setVelY(getVelY() + GRAVITY);
+        this.setVelY(getVelY() + GRAVITY + getAccY());
     }
 
     @Override
@@ -86,64 +85,63 @@ public class Box extends RectObj implements Movable {
         } else if (this.getVelX() < 0) {
             this.setAccX(this.getAccX() + friction);
         }
+        this.setAccX(getAccX() - 1);
     }
-    
 
-	public void destroyBox() {
-		gameState.getColObjects().remove(this);
-	}
-	
+    public void destroyBox() {
+        gameState.getColObjects().remove(this);
+    }
 
-	@Override
-	public void update() {
-		
-		
-		boolean status = true; //Air status
-		for(Collisionable c: gameState.getColObjects()) {
-			
-			if(c.equals(this)) {
-				fall();
-				continue;
-			}
-			
-			if(this.checkCollision(c) ) {
-				status = false;
-				
-				
-				if(this.breakObject(c)) {
-					destroyBox();
-					break;
-				}
-				else {
-					impact(this,c);
-				}
+    @Override
+    public void update() {
+        this.move();
+        stop();
+        fall();
+        boolean status = true; // Air status
+        for (Collisionable c : gameState.getColObjects()) {
 
-			}
-			
-			fall();
-		
-			
-			
-		}
-		
-		this.move();
-		
-		stop();
-		
-		
-		
-	}
+            if (c.equals(this)) {
+                fall();
+                continue;
+            }
 
-	@Override
-	public void draw(Graphics g) {
-		Graphics2D g2d = (Graphics2D)g;
-		
-		AffineTransform at = AffineTransform.getTranslateInstance((double)getX(), (double)getY());
-		
-		texture = Loader.resize(texture, (int)getWidth(), (int)getHeight());
-		
-		g2d.drawImage(texture, at, null);
-		
-	}
+            if (this.checkCollision(c)) {
+                status = false;
+
+                if (this.breakObject(c)) {
+                    destroyBox();
+                    break;
+                } else {
+                    impact(this, c);
+                    this.move();
+                }
+
+            }
+
+            // fall();
+
+        }
+
+        // this.move();
+
+        // stop();
+
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+
+        AffineTransform at = AffineTransform.getTranslateInstance((double) getX(),
+                (double) getY());
+        // AffineTransform at = AffineTransform.getTranslateInstance((double) getX() +
+        // getWidth() / 2,
+        // (double) getY() + getHeight() / 2);
+
+        texture = Loader.resize(texture, (int) getWidth(), (int) getHeight());
+
+        g2d.drawImage(texture, at, null);
+
+    }
 
 }
