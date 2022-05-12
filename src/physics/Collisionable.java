@@ -4,7 +4,8 @@
 package physics;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
+
+import states.GameState;
 
 public abstract class Collisionable {
     private int x;
@@ -16,14 +17,16 @@ public abstract class Collisionable {
     private double accX;
     private double accY;
     private final Material material;
-    public static final int WOOD_BREAK_SPEED = 100;
-    public static final int STONE_BREAK_SPEED = 25;
+    public static final double WOOD_BREAK_SPEED = 10;
+    public static final double STONE_BREAK_SPEED = 0.5;
+    
+    protected GameState gameState;
 
-    public Collisionable(int x, int y) {
-        this(x, y, 20.0, Material.Wood);
+    public Collisionable(int x, int y, GameState gameState) {
+        this(x, y, 20.0, Material.Wood, gameState);
     }
 
-    public Collisionable(int x, int y, double weight, Material material) {
+    public Collisionable(int x, int y, double weight, Material material,GameState gameState) {
         this.velX = 0.0;
         this.velY = 0.0;
         this.accX = 0.0;
@@ -32,11 +35,12 @@ public abstract class Collisionable {
         this.setY(y);
         this.weight = weight;
         this.material = material;
+        this.gameState = gameState;
     }
 
     public Collisionable(int x, int y, double weight, Material material, double velX, double velY, double accX,
-            double accY) {
-        this(x, y, weight, material);
+            double accY, GameState gameState) {
+        this(x, y, weight, material, gameState);
         this.setVelX(velX);
         this.setVelY(velY);
         this.setAccX(accX);
@@ -44,22 +48,40 @@ public abstract class Collisionable {
     }
 
     public abstract boolean checkCollision(Collisionable p0);
+    
+    
 
     public static void impact(Collisionable one, Collisionable two) {
         double oneMass = one.getWeight() / 9.81;
         double twoMass = two.getWeight() / 9.81;
         double prevOneVelX = one.getVelX();
         double prevOneVelY = one.getVelY();
+        
+        if(one instanceof Movable &&  one instanceof Movable   ) {
+        	
+        	one.setVelX(
+                    ((one.getVelX()) * ((oneMass / twoMass) - 1) + (2 * two.getVelX())) / (1 + (oneMass / twoMass)));
+            one.setVelY(
+                    ((one.getVelY()) * ((oneMass / twoMass) - 1) + (2 * two.getVelY())) / (1 + (oneMass / twoMass)));
 
-        one.setVelX(
-                ((one.getVelX()) * ((oneMass / twoMass) - 1) + (2 * two.getVelX())) / (1 + (oneMass / twoMass)));
-        one.setVelY(
-                ((one.getVelY()) * ((oneMass / twoMass) - 1) + (2 * two.getVelY())) / (1 + (oneMass / twoMass)));
+            two.setVelX(
+                    prevOneVelX + one.getVelX() - two.getVelX());
+            two.setVelY(
+                    prevOneVelY + one.getVelY() - two.getVelY());
+        	return;
+        }
+        
+        if(one instanceof Movable) {
+        	one.setVelX(one.getVelX() * -1);
+        	one.setVelY(one.getVelY() * -1);
+        }
+        
+        else if(two instanceof Movable) {
+        	two.setVelX(two.getVelX() * -1);
+        	two.setVelY(two.getVelY() * -1);
+        }
 
-        two.setVelX(
-                prevOneVelX + one.getVelX() - two.getVelX());
-        two.setVelY(
-                prevOneVelY + one.getVelY() - two.getVelY());
+        
     }
 
     public boolean breakObject(Collisionable p0) {
@@ -133,7 +155,7 @@ public abstract class Collisionable {
         return this.material;
     }
 
-    public abstract void update(ArrayList<Collisionable> colObjects);
+    public abstract void update();
     
     public abstract void draw(Graphics g);
 

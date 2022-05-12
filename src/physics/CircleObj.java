@@ -4,26 +4,27 @@
 package physics;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
+
+import states.GameState;
 
 public class CircleObj extends Collisionable {
 
     private double radius;
 
     public CircleObj(int x, int y, double weight, Material material, double velX,
-            double velY, double accX, double accY, double radius) {
-        super(x, y, weight, material, velX, velY, accX, accY);
+            double velY, double accX, double accY, double radius, GameState gameState) {
+        super(x, y, weight, material, velX, velY, accX, accY, gameState);
 
         this.setRadius(radius);
     }
 
-    public CircleObj(int x, int y, double weight, Material material, double radius) {
-        super(x, y, weight, material);
+    public CircleObj(int x, int y, double weight, Material material, double radius, GameState gameState) {
+        super(x, y, weight, material, gameState);
         this.setRadius(radius);
     }
 
-    public CircleObj(int x, int y, double weight, double radius) {
-        super(x, y);
+    public CircleObj(int x, int y, double weight, double radius, GameState gameState) {
+        super(x, y, gameState);
 
         this.setRadius(radius);
     }
@@ -88,7 +89,7 @@ public class CircleObj extends Collisionable {
 
 
 	@Override
-	public void update(ArrayList<Collisionable> colObjects) {
+	public void update() {
 		// TODO Auto-generated method stub
 		
 	}

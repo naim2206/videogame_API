@@ -8,6 +8,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import loader.Loader;
+import states.GameState;
+
 public abstract class Player extends CircleObj implements Movable{
 	
 	protected boolean created = false; //singleton
@@ -16,28 +19,29 @@ public abstract class Player extends CircleObj implements Movable{
 	protected Player player;
 	
 	public Player(int x, int y, double weight, double velX, double velY, double accX, double accY,
-			double radius, BufferedImage texture) {
-		super(x, y, weight, Material.Wood, velX, velY, accX, accY, radius);
+			double radius, BufferedImage texture, GameState gamestate) {
+		super(x, y, weight, Material.Wood, velX, velY, accX, accY, radius, gamestate);
 		this.texture = texture;
+		this.gameState = gamestate;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Player(int x, int y, double weight, double radius, BufferedImage texture) {
-		super(x, y, weight, Material.Wood, radius);
+	public Player(int x, int y, double weight, double radius, BufferedImage texture , GameState gamestate) {
+		super(x, y, weight, Material.Wood, radius, gamestate);
 		this.texture = texture;
-		
+		this.gameState = gamestate; 
 		// TODO Auto-generated constructor stub
 	}
 
 	
 	public abstract void moveByPlayer(); 
 	
-	public void destroyPlayer(ArrayList<Collisionable> colObjects) {
-		colObjects.remove(this);
+	public void destroyPlayer() {
+		gameState.getColObjects().remove(this);
 	}
 	
 	public void fall() {
-		this.setVelY(getVelY() + GRAVITY);
+		if(MAX_SPEED_Y > getVelY()) this.setVelY(getVelY() + GRAVITY);
 	}
 	
 	public void stop() {
@@ -46,24 +50,24 @@ public abstract class Player extends CircleObj implements Movable{
 	
 	public void move() {
 		
-		this.setVelX(getVelX() + getAccX());
-		this.setVelY(getVelY() + getAccY());
+		//this.setVelX(getVelX() + getAccX());
+		//this.setVelY(getVelY() + getAccY());
 		
 		this.setX(Math.round((float) (this.getX() + this.getVelX())));
 	    this.setY(Math.round((float) (this.getY() + this.getVelY())));
 	    
-	    System.out.println(Math.round((float) (this.getX() + this.getVelX())));
-	    System.out.printf("Moving X = %d Y = %d\n", getX(),getY());
-	    System.out.printf("Vel X = %f, Y = %f\n", getVelX(),getVelY());
+	   // System.out.println(Math.round((float) (this.getX() + this.getVelX())));
+	    //System.out.printf("Moving X = %d Y = %d\n", getX(),getY());
+	    //System.out.printf("Vel X = %f, Y = %f\n", getVelX(),getVelY());
 	}
 
 	
-	public void update(ArrayList<Collisionable> colObjects) {
+	public void update() {
 		boolean status = true; //Air status
 		this.moveByPlayer();
 				
 		
-		for(Collisionable c: colObjects) {
+		for(Collisionable c: gameState.getColObjects()) {
 			
 			if(c.equals(this)) {
 				fall();
@@ -75,7 +79,8 @@ public abstract class Player extends CircleObj implements Movable{
 				
 				
 				if(this.breakObject(c)) {
-					destroyPlayer(colObjects);
+					destroyPlayer();
+					break;
 				}
 				else {
 					impact(this,c);
@@ -88,6 +93,7 @@ public abstract class Player extends CircleObj implements Movable{
 			
 			
 		}
+		
 		this.move();
 		
 		stop();
@@ -115,6 +121,8 @@ public abstract class Player extends CircleObj implements Movable{
 			at.rotate(angle, getRadius(), getRadius());
 		}
 		*/
+		texture = Loader.resize(texture, (int)getRadius()*2, (int)getRadius()*2);
+		
 		g2d.drawImage(texture, at, null);
 		
 	}

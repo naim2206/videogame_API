@@ -4,21 +4,23 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
-
 import loader.Assets;
-import physics.Collisionable;
-import physics.MyPlayer;
+import physics.*;
 
 
-public class GameState1 {
 
-	private ArrayList<Collisionable> colObjects = new ArrayList<>();
-	private MyPlayer player;
+public class GameState1 extends GameState{
+
+	
 
 	
 	public GameState1() {
-		this.player = new MyPlayer(100, 400, 50, 2, Assets.Player);
+		this.player = new MyPlayer(100, 400, 15, 25, Assets.Player, this);
 		colObjects.add(player);
+		
+		colObjects.add(new Brick(300, 500, 60, Material.Stone, 100, 100, this)
+				
+				);
 		
 	}
 	
@@ -30,7 +32,7 @@ public class GameState1 {
 	public void update() {
 		
 		for(int i = 0; i < colObjects.size(); i++) {
-			colObjects.get(i).update(colObjects);
+			colObjects.get(i).update();
 		}
 	
 		
@@ -48,4 +50,7 @@ public class GameState1 {
 		
 		
 	}
+	
+	
+	
 }

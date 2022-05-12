@@ -1,13 +1,18 @@
 package physics;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import loader.Assets;
+import loader.Loader;
+import states.GameState;
 
 public class Box extends RectObj implements Movable {
-
+	
+	
     private BufferedImage texture = Assets.WoodBox;
 
     /**
@@ -23,8 +28,8 @@ public class Box extends RectObj implements Movable {
      * @param height
      */
     public Box(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
-            double width, double height) {
-        super(x, y, weight, material, velX, velY, accX, accY, width, height);
+            double width, double height, GameState gameState) {
+        super(x, y, weight, material, velX, velY, accX, accY, width, height, gameState);
         if (material == Material.Stone)
             this.setTexture(Assets.StoneBox);
     }
@@ -45,8 +50,8 @@ public class Box extends RectObj implements Movable {
      * @param width
      * @param height
      */
-    public Box(int x, int y, double weight, Material material, double width, double height) {
-        super(x, y, weight, material, width, height);
+    public Box(int x, int y, double weight, Material material, double width, double height, GameState gameState) {
+        super(x, y, weight, material, width, height, gameState);
         if (material == Material.Stone)
             this.setTexture(Assets.StoneBox);
     }
@@ -58,8 +63,8 @@ public class Box extends RectObj implements Movable {
      * @param width
      * @param height
      */
-    public Box(int x, int y, double weight, double width, double height) {
-        super(x, y, weight, width, height);
+    public Box(int x, int y, double weight, double width, double height, GameState gameState) {
+        super(x, y, weight, width, height, gameState);
     }
 
     @Override
@@ -82,18 +87,62 @@ public class Box extends RectObj implements Movable {
             this.setAccX(this.getAccX() + friction);
         }
     }
-
     
 
+	public void destroyBox() {
+		gameState.getColObjects().remove(this);
+	}
+	
+
 	@Override
-	public void update(ArrayList<Collisionable> colObjects) {
-		// TODO Auto-generated method stub
+	public void update() {
+		
+		
+		boolean status = true; //Air status
+		for(Collisionable c: gameState.getColObjects()) {
+			
+			if(c.equals(this)) {
+				fall();
+				continue;
+			}
+			
+			if(this.checkCollision(c) ) {
+				status = false;
+				
+				
+				if(this.breakObject(c)) {
+					destroyBox();
+					break;
+				}
+				else {
+					impact(this,c);
+				}
+
+			}
+			
+			fall();
+		
+			
+			
+		}
+		
+		this.move();
+		
+		stop();
+		
+		
 		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		Graphics2D g2d = (Graphics2D)g;
+		
+		AffineTransform at = AffineTransform.getTranslateInstance((double)getX(), (double)getY());
+		
+		texture = Loader.resize(texture, (int)getWidth(), (int)getHeight());
+		
+		g2d.drawImage(texture, at, null);
 		
 	}
 

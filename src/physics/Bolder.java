@@ -1,6 +1,7 @@
 package physics;
 
 import loader.Assets;
+import states.GameState;
 
 import java.awt.image.BufferedImage;
 
@@ -19,8 +20,8 @@ public class Bolder extends CircleObj implements Movable {
      * @param radius
      */
     public Bolder(int x, int y, double weight, double velX, double velY, double accX, double accY,
-            double radius) {
-        super(x, y, weight, Material.Stone, velX, velY, accX, accY, radius);
+            double radius, GameState gameState) {
+        super(x, y, weight, Material.Stone, velX, velY, accX, accY, radius, gameState);
     }
 
     public BufferedImage getTexture() {
@@ -37,8 +38,8 @@ public class Bolder extends CircleObj implements Movable {
      * @param weight
      * @param radius
      */
-    public Bolder(int x, int y, double weight, double radius) {
-        super(x, y, weight, Material.Stone, radius);
+    public Bolder(int x, int y, double weight, double radius, GameState gameState) {
+        super(x, y, weight, Material.Stone, radius, gameState);
     }
 
     @Override

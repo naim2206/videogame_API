@@ -3,26 +3,28 @@
 // 
 package physics;
 
+import states.GameState;
+
 public abstract class RectObj extends Collisionable {
     private double width;
     private double height;
 
     public RectObj(int x, int y, double weight, Material material, double velX,
-            double velY, double accX, double accY, double width, double height) {
-        super(x, y, weight, material, velX, velY, accX, accY);
+            double velY, double accX, double accY, double width, double height, GameState gameState) {
+        super(x, y, weight, material, velX, velY, accX, accY, gameState);
         this.setWidth(width);
         this.setHeight(height);
     }
 
     public RectObj(int x, int y, double weight, Material material, double width,
-            double height) {
-        super(x, y, weight, material);
+            double height, GameState gameState) {
+        super(x, y, weight, material, gameState);
         this.setWidth(width);
         this.setHeight(height);
     }
 
-    public RectObj(int x, int y, double weight, double width, double height) {
-        super(x, y);
+    public RectObj(int x, int y, double weight, double width, double height, GameState gameState) {
+        super(x, y, gameState);
         this.setWidth(width);
         this.setHeight(height);
     }
