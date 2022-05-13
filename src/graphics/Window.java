@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import input.Keyboard;
+import game.Keyboard;
 
 public class Window extends JFrame{
 	
@@ -33,7 +33,7 @@ public class Window extends JFrame{
 		
 		
 		panel.setVisible(true); //Muestra el canvas
-		panel.setPreferredSize(new Dimension(this.width,this.height)); //tamaño canvas
+		panel.setPreferredSize(new Dimension(this.width,this.height)); //tamaï¿½o canvas
 		panel.setMaximumSize(new Dimension(this.width,this.height));
 		panel.setMinimumSize(new Dimension(this.width,this.height));
 		

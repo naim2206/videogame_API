@@ -1,13 +1,12 @@
-package main;
+package main.game1;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import loader.Assets;
-import input.Keyboard;
+import game.Assets;
+import game.Keyboard;
 import graphics.Window;
-import states.GameState1;
 
 public class Game1 implements Runnable {
 
@@ -24,7 +23,7 @@ public class Game1 implements Runnable {
 	}
 
 	public static void Init() {
-		ventana = new Window("Jueguito", 500, 700, Color.CYAN);
+		ventana = new Window("Jueguito", GameState1.width, GameState1.heigth, Color.CYAN);
 		Assets.init();
 		gameState = new GameState1();
 		keyboard = ventana.getKeyboard();
@@ -94,7 +93,7 @@ public class Game1 implements Runnable {
 		// ------------------------
 
 		g.setColor(Color.black);
-		g.fillRect(0, 0, 500, 700);
+		g.fillRect(0, 0, 500, 900);
 
 		gameState.draw(g);
 

@@ -1,28 +1,26 @@
-package states;
+package main.game1;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.ArrayList;
-import loader.Assets;
-import physics.*;
+
+import game.Assets;
+import game.GameState;
+import physics.Brick;
+import physics.Material;
 
 public class GameState1 extends GameState {
+	public static int heigth = 900;
+	public static int width = 500;
 
 	public GameState1() {
-		this.player = new MyPlayer(100, 100, 15, 25, Assets.Player, this);
+		this.player = new MyPlayer(100, heigth - 50, 15, 25, Assets.Player, this);
 		colObjects.add(player);
 
-		colObjects.add(new Brick(0, 675, 60, Material.Stone, 500, 25, this));
+		colObjects.add(new Brick(0, heigth - 25, 60, Material.Stone, 500, 25, this));
 
-		colObjects.add(new Brick(0, 0, 60, Material.Stone, 25, 700, this));
+		colObjects.add(new Brick(100, 700, 60, Material.Stone, 200, 25, this));
 
-		colObjects.add(new Brick(0, 25, 60, Material.Stone, 500, 25, this));
-
-		colObjects.add(new Brick(475, 0, 60, Material.Stone, 25, 700, this));
-
-		colObjects.add(new Box(300, 100, 15, Material.Stone, 0, 0, 0, 0, 100, 100, this));
-		colObjects.add(new Bolder(100, 300, 15, 0, 0, 0, 0, 10, this));
 	}
 
 	public void update() {

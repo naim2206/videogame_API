@@ -3,7 +3,7 @@
 // 
 package physics;
 
-import states.GameState;
+import game.GameState;
 
 public abstract class RectObj extends Collisionable {
     private double width;

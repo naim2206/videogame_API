@@ -1,9 +1,10 @@
-package physics;
+package main.game1;
 
 import java.awt.image.BufferedImage;
 
-import input.Keyboard;
-import states.GameState;
+import game.GameState;
+import game.Keyboard;
+import physics.Player;
 
 public class MyPlayer extends Player {
 
@@ -24,42 +25,38 @@ public class MyPlayer extends Player {
 	@Override
 	public void moveByPlayer() {
 
-		if (getX() > 500) {
+		if (getX() > GameState1.width) {
 			setX(0);
 		}
-		if (getY() > 700) {
+		if (getY() > GameState1.heigth) {
 			setY(0);
 		}
 
 		if (getX() < 0) {
-			setX(500);
-		}
-
-		if (getY() < 0) {
-			setY(700);
+			setX(GameState1.width);
 		}
 
 		if (Keyboard.RIGHT && (MAX_SPEED_X > getVelX())) {
-			this.setVelX(getVelX() + 0.5);
+			this.setVelX(getVelX() + 0.2);
 			// move();
 
-			this.setX((int) (getX() + 5));
+			this.setX((int) (getX() + 2));
 			return;
 		}
 
 		if (Keyboard.LEFT && (-MAX_SPEED_X < getVelX())) {
-			this.setVelX(getVelX() - 0.5);
+			this.setVelX(getVelX() - 0.2);
 			// move();
 
-			this.setX((int) (getX() - 5));
+			this.setX((int) (getX() - 2));
 			return;
 		}
 
 		if (Keyboard.UP && (-MAX_SPEED_Y < getVelY())) {
 			// this.setVelX(0);
-			this.setVelY(getVelY() - 0.5);
+			this.setVelY(getVelY() - 1.5);
 
-			this.setY((int) (getY() - 5));
+			this.setY((int) (getY() - 2));
 			return;
 		}
 

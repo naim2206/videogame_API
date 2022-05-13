@@ -5,7 +5,7 @@ package physics;
 
 import java.awt.Graphics;
 
-import states.GameState;
+import game.GameState;
 
 public abstract class CircleObj extends Collisionable {
 

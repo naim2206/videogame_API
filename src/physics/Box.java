@@ -4,11 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-import loader.Assets;
-import loader.Loader;
-import states.GameState;
+import game.Assets;
+import game.GameState;
+import game.Loader;
 
 public class Box extends RectObj implements Movable {
 
@@ -74,7 +73,7 @@ public class Box extends RectObj implements Movable {
 
     @Override
     public void fall() {
-        this.setVelY(getVelY() + GRAVITY + getAccY());
+        this.setVelY(getVelY() + getAccY() + GRAVITY);
     }
 
     @Override
@@ -94,14 +93,14 @@ public class Box extends RectObj implements Movable {
 
     @Override
     public void update() {
+        fall();
         this.move();
         stop();
-        fall();
         boolean status = true; // Air status
         for (Collisionable c : gameState.getColObjects()) {
 
             if (c.equals(this)) {
-                fall();
+                // fall();
                 continue;
             }
 
@@ -113,7 +112,21 @@ public class Box extends RectObj implements Movable {
                     break;
                 } else {
                     impact(this, c);
+                    if (c instanceof Movable) {
+                        if (this.getVelY() > 0)
+                            this.setY(this.getY() - 1);
+                        if (this.getVelY() < 0)
+                            this.setY(this.getY() + 1);
+                        if (this.getVelX() > 0)
+                            this.setX(this.getX() - 1);
+                        if (this.getVelX() < 0)
+                            this.setX(this.getX() + 1);
+                        // c.setY(c.getY() + 1);
+                        // Movable cm = (Movable) c;
+                        // cm.move();
+                    }
                     this.move();
+
                 }
 
             }

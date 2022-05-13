@@ -1,4 +1,6 @@
-package states;
+package main.game2;
+
+import game.GameState;
 
 public class GameStates2 extends GameState{
 

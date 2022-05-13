@@ -4,10 +4,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-import loader.Loader;
-import states.GameState;
+import game.GameState;
+import game.Loader;
 
 public abstract class Player extends CircleObj implements Movable {
 
@@ -42,8 +41,9 @@ public abstract class Player extends CircleObj implements Movable {
 			this.setVelY(getVelY() + GRAVITY + getAccY());
 	}
 
+	@Override
 	public void stop() {
-		this.setAccX(getAccX() - .001);
+		this.setAccX(getAccX() - 1);
 	}
 
 	public void move() {
@@ -64,12 +64,12 @@ public abstract class Player extends CircleObj implements Movable {
 		this.moveByPlayer();
 		fall();
 		this.move();
+		stop();
 
 		stop();
 		for (Collisionable c : gameState.getColObjects()) {
 
 			if (c.equals(this)) {
-				fall();
 				continue;
 			}
 
@@ -81,6 +81,35 @@ public abstract class Player extends CircleObj implements Movable {
 					break;
 				} else {
 					impact(this, c);
+					if (c instanceof Movable) {
+						// if (this.getVelY() > 0) {
+						// this.setY(this.getY() - 1);
+						// c.setY(c.getY() + 1);
+						// }
+						// if (this.getVelY() < 0) {
+						// this.setY(this.getY() + 1);
+						// c.setY(c.getY() - 1);
+						// }
+						// if (this.getVelX() > 0) {
+						// this.setX(this.getX() - 1);
+						// c.setX(c.getX() + 1);
+						// }
+						// if (this.getVelX() < 0) {
+						// this.setX(this.getX() + 1);
+						// c.setX(c.getX() - 1);
+						// }
+						if (this.getVelY() > 0)
+							this.setY(this.getY() - 1);
+						if (this.getVelY() < 0)
+							this.setY(this.getY() + 1);
+						if (this.getVelX() > 0)
+							this.setX(this.getX() - 1);
+						if (this.getVelX() < 0)
+							this.setX(this.getX() + 1);
+						// cm.move();
+
+					}
+					this.move();
 				}
 
 			}

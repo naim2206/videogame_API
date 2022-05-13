@@ -7,7 +7,7 @@ import java.awt.Graphics;
 
 import org.w3c.dom.css.Rect;
 
-import states.GameState;
+import game.GameState;
 
 public abstract class Collisionable {
     private int x;
@@ -19,8 +19,8 @@ public abstract class Collisionable {
     private double accX;
     private double accY;
     private final Material material;
-    public static final double WOOD_BREAK_SPEED = 120;
-    public static final double STONE_BREAK_SPEED = 170;
+    public static final double WOOD_BREAK_SPEED = 21;
+    public static final double STONE_BREAK_SPEED = 18;
 
     protected GameState gameState;
 
@@ -57,32 +57,87 @@ public abstract class Collisionable {
         double prevOneVelX = one.getVelX();
         double prevOneVelY = one.getVelY();
 
-        if (one instanceof Movable && one instanceof Movable) {
-
+        if (two instanceof Movable) {
+            System.out.println("entra entre 2");
             one.setVelX(
-                    ((one.getVelX()) * ((oneMass / twoMass) - 1) + (2 * two.getVelX())) / (1 + (oneMass / twoMass)));
+                    ((one.getVelX()) * ((oneMass / twoMass) - 1) + (2 * two.getVelX())) / (1 +
+                            (oneMass / twoMass)));
             one.setVelY(
-                    ((one.getVelY()) * ((oneMass / twoMass) - 1) + (2 * two.getVelY())) / (1 + (oneMass / twoMass)));
+                    ((one.getVelY()) * ((oneMass / twoMass) - 1) + (2 * two.getVelY())) / (1 +
+                            (oneMass / twoMass)));
 
             two.setVelX(
                     prevOneVelX + one.getVelX() - two.getVelX());
             two.setVelY(
                     prevOneVelY + one.getVelY() - two.getVelY());
+            // if (two.getAccX() > 0) {
+            // two.setAccX(two.getAccX() - 1);
+            // }
+            // if (two.getAccX() < 0) {
+            // two.setAccX(two.getAccX() + 1);
+            // }
+            // if (two.getAccY() > 0) {
+            // two.setAccY(two.getAccY() - 1);
+            // }
+            // if (two.getAccY() < 0) {
+            // two.setAccY(two.getAccY() + 1);
+            // }
+
+            // one.setVelX(one.getVelX() * 0.9);
+            // one.setVelY(one.getVelY() * 0.8);
+            // if (Math.abs(one.getVelY()) < 3.5) {
+            // one.setVelY(0);
+
+            // }
             return;
         }
 
         if (one instanceof Movable) {
 
-            one.setVelX(one.getVelX() * -1);
             one.setVelY(one.getVelY() * -1);
+            Movable oneM = (Movable) one;
+            oneM.move();
+            oneM.move();
+            if (one.checkCollision(two)) {
+                one.setVelX(one.getVelX() * -1);
+                one.setVelY(one.getVelY() * -1);
+
+                oneM.move();
+                oneM.move();
+            }
+
+            // if (one.getVelX() > 0) {
+            // one.setVelX(one.getVelX() - 0.5);
+            // }
+            // if (one.getVelX() < 0) {
+            // one.setVelX(one.getVelX() + 0.5);
+            // }
+            if (one.getVelY() > 0) {
+                one.setVelY(one.getVelY() * 0.8);
+
+            }
+            if (one.getVelY() < 0) {
+                one.setVelY(one.getVelY() * 0.8);
+            }
+
+            // System.out.println(one.getVelY());
+            one.setVelX(one.getVelX() * 0.9);
+            // if (Math.abs(one.getVelY()) < 10)
+            // one.setVelY(one.getVelY() * 0.8);
+            // if (Math.abs(one.getVelY()) < 3.5) {
+            // one.setVelY(0);
+
+            // }
+            // System.out.println(one.getVelY());
         }
 
-        else if (two instanceof Movable)
+        // else if (two instanceof Movable)
 
-        {
-            two.setVelX(two.getVelX() * -1);
-            two.setVelY(two.getVelY() * -1);
-        }
+        // {
+        // System.out.println("entra 2");
+        // two.setVelX(two.getVelX() * -1);
+        // two.setVelY(two.getVelY() * -1);
+        // }
 
     }
 

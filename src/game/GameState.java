@@ -1,9 +1,9 @@
-package states;
+package game;
 
 import java.util.ArrayList;
 
+import main.game1.MyPlayer;
 import physics.Collisionable;
-import physics.MyPlayer;
 
 public class GameState {
 	

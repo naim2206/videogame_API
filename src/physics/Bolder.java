@@ -1,13 +1,13 @@
 package physics;
 
-import loader.Assets;
-import loader.Loader;
-import states.GameState;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.awt.Graphics;
-
 import java.awt.image.BufferedImage;
+
+import game.Assets;
+import game.GameState;
+import game.Loader;
 
 public class Bolder extends CircleObj implements Movable {
 
@@ -71,14 +71,14 @@ public class Bolder extends CircleObj implements Movable {
 
     @Override
     public void update() {
+        fall();
         this.move();
         stop();
-        fall();
         boolean status = true; // Air status
         for (Collisionable c : gameState.getColObjects()) {
 
             if (c.equals(this)) {
-                fall();
+                // fall();
                 continue;
             }
 
@@ -90,7 +90,21 @@ public class Bolder extends CircleObj implements Movable {
                     break;
                 } else {
                     impact(this, c);
+                    if (c instanceof Movable) {
+                        if (this.getVelY() > 0)
+                            this.setY(this.getY() - 1);
+                        if (this.getVelY() < 0)
+                            this.setY(this.getY() + 1);
+                        if (this.getVelX() > 0)
+                            this.setX(this.getX() - 1);
+                        if (this.getVelX() < 0)
+                            this.setX(this.getX() + 1);
+                        // c.setY(c.getY() + 1);
+                        // Movable cm = (Movable) c;
+                        // cm.move();
+                    }
                     this.move();
+
                 }
 
             }

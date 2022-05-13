@@ -1,8 +1,6 @@
-package loader;
+package game;
 
 import java.awt.image.BufferedImage;
-
-import loader.Loader;
 
 public class Assets {
 
@@ -14,13 +12,11 @@ public class Assets {
 	public static BufferedImage WoodBox;
 	public static BufferedImage StoneBox;
 	public static BufferedImage Player;
-	
+
 	// Stone
 	public static BufferedImage Boulder;
 	public static BufferedImage StoneBrick;
 	public static BufferedImage WoodBrick;
-	
-	
 
 	public static void init() {
 

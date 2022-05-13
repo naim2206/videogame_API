@@ -6,9 +6,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import loader.Assets;
-import loader.Loader;
-import states.GameState;
+import game.Assets;
+import game.GameState;
+import game.Loader;
 
 public class Brick extends RectObj {
 
@@ -81,9 +81,16 @@ public class Brick extends RectObj {
             if (this.checkCollision(c)) {
                 if (this.breakObject(c)) {
                     destroyBrick(gameState.getColObjects());
-                } else {
-                    impact(this, c);
                 }
+                // } else {
+                // impact(this, c);
+                // if (c instanceof Movable) {
+                // Movable cM = (Movable) c;
+                // cM.move();
+                // cM.move();
+                // cM.move();
+                // }
+                // }
 
             }
         }
