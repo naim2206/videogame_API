@@ -10,11 +10,11 @@ import physics.Brick;
 import physics.Material;
 
 public class GameState1 extends GameState {
-	public static int heigth = 900;
+	public static int heigth = 700;
 	public static int width = 500;
 
 	public GameState1() {
-		this.player = new MyPlayer(100, heigth - 50, 15, 25, Assets.Player, this);
+		this.player = new MyPlayer(100, heigth - 50, 15, 0, 0, 0, 0, 25, Assets.Player, this);
 		colObjects.add(player);
 
 		colObjects.add(new Brick(0, heigth - 25, 60, Material.Stone, 500, 25, this));
@@ -32,7 +32,7 @@ public class GameState1 extends GameState {
 
 		for (int i = 0; i < colObjects.size(); i++) {
 			colObjects.get(i).update();
-		
+
 		}
 
 	}
