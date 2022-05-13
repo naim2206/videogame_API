@@ -2,6 +2,8 @@ package main.game1;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.JOptionPane;
+
 import game.GameState;
 import game.Keyboard;
 import physics.Player;
@@ -65,6 +67,12 @@ public class MyPlayer extends Player {
 			this.setAccY(0);
 		}
 
+	}
+
+	@Override
+	public void destroyPlayer() {
+		super.destroyPlayer();
+		JOptionPane.showMessageDialog(null, "You died", "Game end", JOptionPane.ERROR_MESSAGE);
 	}
 
 }

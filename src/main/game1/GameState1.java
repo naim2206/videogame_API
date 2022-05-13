@@ -21,12 +21,18 @@ public class GameState1 extends GameState {
 
 		colObjects.add(new Brick(100, 700, 60, Material.Stone, 200, 25, this));
 
+		colObjects.add(new Brick(200, 500, 60, Material.Stone, 200, 25, this));
+
+		colObjects.add(new Brick(0, 300, 60, Material.Stone, 200, 25, this));
+		colObjects.add(new Brick(300, 300, 60, Material.Stone, 200, 25, this));
+		colObjects.add(new Brick(200, 100, 60, Material.Stone, 200, 25, this));
 	}
 
 	public void update() {
 
 		for (int i = 0; i < colObjects.size(); i++) {
 			colObjects.get(i).update();
+		
 		}
 
 	}
