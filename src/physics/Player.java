@@ -10,10 +10,10 @@ import game.Loader;
 
 public abstract class Player extends CircleObj implements Movable {
 
-	protected boolean created = false; // singleton
-	protected double angle = 0;
+	// protected boolean created = false; // singleton
+	// protected double angle = 0;
 	protected BufferedImage texture;
-	protected Player player;
+	// protected Player player;
 
 	public Player(int x, int y, double weight, double velX, double velY, double accX, double accY,
 			double radius, BufferedImage texture, GameState gamestate) {
