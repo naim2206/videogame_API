@@ -59,7 +59,6 @@ public class Game2 implements Runnable {
 				JOptionPane.showMessageDialog(null, "You win", "Win", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			}
-			System.out.println(siHayBrick);
 
 			try {
 				Thread.sleep(17l);
