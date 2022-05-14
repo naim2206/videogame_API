@@ -7,20 +7,22 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JOptionPane;
 
 import game.Assets;
+import game.Game;
 import game.Keyboard;
 import graphics.Window;
 import physics.Bolder;
 import physics.Collisionable;
 
-public class Game1 implements Runnable {
+// public class Game1 implements Runnable {
+public class Game1 extends Game {
 
-	private static GameState1 gameState;
+	// private static GameState1 gameState;
 	private static Keyboard keyboard;
-	private static Window ventana;
-	private static BufferStrategy bs;
-	private static Graphics g;
-	private Thread thread;
-	private boolean running;
+	// private static Window ventana;
+	// private static BufferStrategy bs;
+	// private static Graphics g;
+	// private Thread thread;
+	// private boolean running;
 	private long time;
 	private long delta;
 
@@ -54,7 +56,7 @@ public class Game1 implements Runnable {
 		while (running) {
 
 			update();
-			draw();
+			draw(GameState1.width, GameState1.heigth);
 			boolean siHay = false;
 			for (Collisionable c : gameState.getColObjects()) {
 				if (c instanceof Bolder) {
@@ -92,42 +94,12 @@ public class Game1 implements Runnable {
 		gameState.update();
 	}
 
-	private static void draw() {
-
-		bs = ventana.getBufferStrategy();
-		if (bs == null) {
-			ventana.createBufferStrategy(3);
-			return;
-		}
-
-		g = bs.getDrawGraphics();
-
-		// ------------------------
-
-		g.setColor(Color.black);
-		g.fillRect(0, 0, GameState1.width, GameState1.heigth);
-
-		gameState.draw(g);
-
-		/*
-		 * g.setColor(Color.white);
-		 * g.drawString("FPS = "+AVERAGEFPS, 0, 10);
-		 */
-		// ------------------------
-
-		g.dispose();
-		bs.show();
-
-	}
-
-	private void start() // Inicia el hilo
-	{
-
-		thread = new Thread(this);
-		thread.start();
-
-		running = true;
-	}
+	// public void start() // Inicia el hilo
+	// {
+	// thread = new Thread(this);
+	// thread.start();
+	// running = true;
+	// }
 
 	// private void stop() // Termina el hilo
 	// {
@@ -141,7 +113,6 @@ public class Game1 implements Runnable {
 	// }
 
 	public static void main(String[] args) {
-
 		new Game1().start();
 
 	}

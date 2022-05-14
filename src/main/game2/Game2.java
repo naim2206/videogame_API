@@ -7,19 +7,21 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JOptionPane;
 
 import game.Assets;
+import game.Game;
 import game.Keyboard;
 import graphics.Window;
 import physics.Brick;
 import physics.Collisionable;
 
-public class Game2 implements Runnable {
-	private static GameStates2 gameState;
+// public class Game2 implements Runnable {
+public class Game2 extends Game {
+	// private static GameStates2 gameState;
 	private static Keyboard keyboard;
-	private static Window ventana;
-	private static BufferStrategy bs;
-	private static Graphics g;
-	private Thread thread;
-	private boolean running;
+	// private static Window ventana;
+	// private static BufferStrategy bs;
+	// private static Graphics g;
+	// private Thread thread;
+	// private boolean running;
 
 	public Game2() {
 		running = false;
@@ -39,7 +41,7 @@ public class Game2 implements Runnable {
 		Init();
 		while (running) {
 			update();
-			draw();
+			draw(GameStates2.width, GameStates2.heigth);
 			boolean siHayPlayer = false;
 			int siHayBrick = 0;
 			for (Collisionable c : gameState.getColObjects()) {
@@ -74,26 +76,6 @@ public class Game2 implements Runnable {
 	public static void update() {
 		keyboard.update();
 		gameState.update();
-	}
-
-	private static void draw() {
-		bs = ventana.getBufferStrategy();
-		if (bs == null) {
-			ventana.createBufferStrategy(3);
-			return;
-		}
-		g = bs.getDrawGraphics();
-		g.setColor(Color.black);
-		g.fillRect(0, 0, GameStates2.width, GameStates2.heigth);
-		gameState.draw(g);
-		g.dispose();
-		bs.show();
-	}
-
-	private void start() {
-		thread = new Thread(this);
-		thread.start();
-		running = true;
 	}
 
 	public static void main(String[] args) {
