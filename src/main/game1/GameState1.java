@@ -1,9 +1,5 @@
 package main.game1;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
 import physics.Box;
 
 import game.Assets;
