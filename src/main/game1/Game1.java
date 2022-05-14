@@ -147,17 +147,16 @@ public class Game1 implements Runnable {
 		running = true;
 	}
 
-	private void stop() // Termina el hilo
-	{
-		try {
-			thread.join();
-			running = false;
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	// private void stop() // Termina el hilo
+	// {
+	// try {
+	// thread.join();
+	// running = false;
+	// } catch (InterruptedException e) {
+	// e.printStackTrace();
+	// }
 
-	}
+	// }
 
 	public static void main(String[] args) {
 

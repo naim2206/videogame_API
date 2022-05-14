@@ -13,12 +13,10 @@ public class MyPlayer2 extends Player {
     public MyPlayer2(int x, int y, double weight, double velX, double velY, double accX, double accY, double radius,
             BufferedImage texture, GameState gameState) {
         super(x, y, weight, velX, velY, accX, accY, radius, texture, gameState);
-        // TODO Auto-generated constructor stub
     }
 
     public MyPlayer2(int x, int y, double weight, double radius, BufferedImage texture, GameState gameState) {
         super(x, y, weight, radius, texture, gameState);
-        // TODO Auto-generated constructor stub
 
         setVelX(0);
         setVelY(0);

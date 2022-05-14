@@ -20,14 +20,12 @@ public abstract class Player extends CircleObj implements Movable {
 		super(x, y, weight, Material.Wood, velX, velY, accX, accY, radius, texture, gamestate);
 		this.texture = texture;
 		this.gameState = gamestate;
-		// TODO Auto-generated constructor stub
 	}
 
 	public Player(int x, int y, double weight, double radius, BufferedImage texture, GameState gamestate) {
 		super(x, y, weight, Material.Wood, radius, gamestate);
 		this.texture = texture;
 		this.gameState = gamestate;
-		// TODO Auto-generated constructor stub
 	}
 
 	public abstract void moveByPlayer();
@@ -60,7 +58,6 @@ public abstract class Player extends CircleObj implements Movable {
 	}
 
 	public void update() {
-		boolean status = true; // Air status
 		this.moveByPlayer();
 		fall();
 		this.move();
@@ -75,7 +72,6 @@ public abstract class Player extends CircleObj implements Movable {
 			}
 
 			if (this.checkCollision(c)) {
-				status = false;
 				// System.out.println("colision de player");
 
 				if (this.breakObject(c)) {

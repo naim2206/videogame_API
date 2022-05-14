@@ -6,7 +6,6 @@ import java.awt.RenderingHints;
 
 import game.Assets;
 import game.GameState;
-import main.game1.MyPlayer;
 import physics.Brick;
 import physics.Material;
 import java.awt.*;

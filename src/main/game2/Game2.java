@@ -20,8 +20,6 @@ public class Game2 implements Runnable {
 	private static Graphics g;
 	private Thread thread;
 	private boolean running;
-	private long time;
-	private long delta;
 
 	public Game2() {
 		running = false;
@@ -114,17 +112,16 @@ public class Game2 implements Runnable {
 		running = true;
 	}
 
-	private void stop() // Termina el hilo
-	{
-		try {
-			thread.join();
-			running = false;
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	// private void stop() // Termina el hilo
+	// {
+	// try {
+	// thread.join();
+	// running = false;
+	// } catch (InterruptedException e) {
+	// e.printStackTrace();
+	// }
 
-	}
+	// }
 
 	public static void main(String[] args) {
 

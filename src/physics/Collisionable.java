@@ -5,8 +5,6 @@ package physics;
 
 import java.awt.Graphics;
 
-import org.w3c.dom.css.Rect;
-
 import game.GameState;
 
 public abstract class Collisionable {

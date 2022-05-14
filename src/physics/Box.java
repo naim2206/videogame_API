@@ -96,7 +96,6 @@ public class Box extends RectObj implements Movable {
         fall();
         this.move();
         stop();
-        boolean status = true; // Air status
         for (int i = 0; i < gameState.getColObjects().size(); i++) {
             Collisionable c = gameState.getColObjects().get(i);
             if (c.equals(this)) {
@@ -105,7 +104,6 @@ public class Box extends RectObj implements Movable {
             }
 
             if (this.checkCollision(c)) {
-                status = false;
 
                 if (this.breakObject(c)) {
 

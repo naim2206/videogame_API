@@ -74,7 +74,6 @@ public class Bolder extends CircleObj implements Movable {
         fall();
         this.move();
         stop();
-        boolean status = true; // Air status
         for (int i = 0; i < gameState.getColObjects().size(); i++) {
             Collisionable c = gameState.getColObjects().get(i);
 
@@ -84,7 +83,6 @@ public class Bolder extends CircleObj implements Movable {
             }
 
             if (this.checkCollision(c)) {
-                status = false;
 
                 if (this.breakObject(c)) {
                     destroy();
