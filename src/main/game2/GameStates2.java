@@ -9,10 +9,11 @@ import game.GameState;
 import main.game1.MyPlayer;
 import physics.Brick;
 import physics.Material;
+import java.awt.*;
 
 public class GameStates2 extends GameState {
-	public static int heigth = 700;
-	public static int width = 1300;
+	public static int heigth = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	public static int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 
 	public GameStates2() {
 		colObjects.add(new Brick(0, heigth - 25, 60, Material.Stone, width, 25, this));
