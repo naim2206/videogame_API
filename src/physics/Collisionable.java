@@ -19,8 +19,8 @@ public abstract class Collisionable {
     private double accX;
     private double accY;
     private final Material material;
-    public static final double WOOD_BREAK_SPEED = 21;
-    public static final double STONE_BREAK_SPEED = 18;
+    public static final double WOOD_BREAK_SPEED = -80;
+    public static final double STONE_BREAK_SPEED = 8;
 
     protected GameState gameState;
 
@@ -58,7 +58,6 @@ public abstract class Collisionable {
         double prevOneVelY = one.getVelY();
 
         if (two instanceof Movable) {
-            System.out.println("entra entre 2");
             one.setVelX(
                     ((one.getVelX()) * ((oneMass / twoMass) - 1) + (2 * two.getVelX())) / (1 +
                             (oneMass / twoMass)));
@@ -146,12 +145,23 @@ public abstract class Collisionable {
             return false;
         if (p0.material == Material.Wood) {
             // no se rompe mucho
-            if (this.getVelX() + this.getVelY() + p0.getVelX() + p0.getVelY() > WOOD_BREAK_SPEED)
+            // System.out
+            // .println("choca? " + (Math.abs(this.getVelX()) + Math.abs(this.getVelY()) +
+            // Math.abs(p0.getVelX())
+            // + Math.abs(p0.getVelY()) - this.weight));
+
+            if (Math.abs(this.getVelX()) + Math.abs(this.getVelY()) + Math.abs(p0.getVelX()) + Math.abs(p0.getVelY())
+                    - this.weight > WOOD_BREAK_SPEED)
                 return true;
             return false;
         }
+        // System.out
+        // .println("choca? " + (Math.abs(this.getVelX()) + Math.abs(this.getVelY()) +
+        // Math.abs(p0.getVelX())
+        // + Math.abs(p0.getVelY()) - this.weight));
+
         // se rompe bastante
-        if (this.getVelX() + this.getVelY() + p0.getVelX() + p0.getVelY() > STONE_BREAK_SPEED)
+        if (this.getVelX() + this.getVelY() + p0.getVelX() + p0.getVelY() - this.weight > STONE_BREAK_SPEED)
             return true;
         return false;
     }
@@ -215,5 +225,7 @@ public abstract class Collisionable {
     public abstract void update();
 
     public abstract void draw(Graphics g);
+
+    public abstract void destroy();
 
 }

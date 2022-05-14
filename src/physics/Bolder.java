@@ -25,8 +25,8 @@ public class Bolder extends CircleObj implements Movable {
      */
     public Bolder(int x, int y, double weight, double velX, double velY, double accX, double accY,
             double radius, GameState gameState) {
-        super(x, y, weight, Material.Stone, velX, velY, accX, accY, radius, gameState);
-        this.setTexture(Assets.Boulder);
+        super(x, y, weight, Material.Stone, velX, velY, accX, accY, radius, Assets.Boulder, gameState);
+        // this.setTexture(Assets.Boulder);
     }
 
     public BufferedImage getTexture() {
@@ -65,7 +65,7 @@ public class Bolder extends CircleObj implements Movable {
         this.setAccX(getAccX() - 1);
     }
 
-    public void destroyBoulder() {
+    public void destroy() {
         gameState.getColObjects().remove(this);
     }
 
@@ -75,7 +75,8 @@ public class Bolder extends CircleObj implements Movable {
         this.move();
         stop();
         boolean status = true; // Air status
-        for (Collisionable c : gameState.getColObjects()) {
+        for (int i = 0; i < gameState.getColObjects().size(); i++) {
+            Collisionable c = gameState.getColObjects().get(i);
 
             if (c.equals(this)) {
                 // fall();
@@ -86,7 +87,7 @@ public class Bolder extends CircleObj implements Movable {
                 status = false;
 
                 if (this.breakObject(c)) {
-                    destroyBoulder();
+                    destroy();
                     break;
                 } else {
                     impact(this, c);
@@ -105,6 +106,10 @@ public class Bolder extends CircleObj implements Movable {
                     }
                     this.move();
 
+                }
+                if (c.breakObject(this)) {
+                    c.destroy();
+                    continue;
                 }
 
             }

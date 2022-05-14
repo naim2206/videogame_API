@@ -87,7 +87,7 @@ public class Box extends RectObj implements Movable {
         this.setAccX(getAccX() - 1);
     }
 
-    public void destroyBox() {
+    public void destroy() {
         gameState.getColObjects().remove(this);
     }
 
@@ -97,8 +97,8 @@ public class Box extends RectObj implements Movable {
         this.move();
         stop();
         boolean status = true; // Air status
-        for (Collisionable c : gameState.getColObjects()) {
-
+        for (int i = 0; i < gameState.getColObjects().size(); i++) {
+            Collisionable c = gameState.getColObjects().get(i);
             if (c.equals(this)) {
                 // fall();
                 continue;
@@ -108,7 +108,8 @@ public class Box extends RectObj implements Movable {
                 status = false;
 
                 if (this.breakObject(c)) {
-                    destroyBox();
+
+                    destroy();
                     break;
                 } else {
                     impact(this, c);
@@ -127,6 +128,10 @@ public class Box extends RectObj implements Movable {
                     }
                     this.move();
 
+                }
+                if (c.breakObject(this)) {
+                    c.destroy();
+                    continue;
                 }
 
             }

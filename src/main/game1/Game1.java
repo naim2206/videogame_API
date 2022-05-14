@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import game.Assets;
 import game.Keyboard;
 import graphics.Window;
+import physics.Bolder;
 import physics.Collisionable;
 
 public class Game1 implements Runnable {
@@ -74,11 +75,12 @@ public class Game1 implements Runnable {
 			draw();
 			boolean siHay = false;
 			for (Collisionable c : gameState.getColObjects()) {
-				if (c instanceof MyPlayer) {
+				if (c instanceof Bolder) {
+					Bolder cB = (Bolder) c;
 					this.delta = System.currentTimeMillis();
 					siHay = true;
-					if (c.getY() <= 0) {
-						JOptionPane.showMessageDialog(null, "You win", "Win", JOptionPane.INFORMATION_MESSAGE);
+					if (cB.getY() >= GameState1.heigth - 25 - cB.getRadius() - 20) {
+						JOptionPane.showMessageDialog(null, "Game over", "You lost", JOptionPane.ERROR_MESSAGE);
 						siHay = false;
 						break;
 					}
@@ -121,7 +123,7 @@ public class Game1 implements Runnable {
 		// ------------------------
 
 		g.setColor(Color.black);
-		g.fillRect(0, 0, 500, 900);
+		g.fillRect(0, 0, GameState1.width, GameState1.heigth);
 
 		gameState.draw(g);
 

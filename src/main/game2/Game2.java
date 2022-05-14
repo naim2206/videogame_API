@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import game.Assets;
 import game.Keyboard;
 import graphics.Window;
+import physics.Brick;
 import physics.Collisionable;
 
 public class Game2 implements Runnable {
@@ -31,7 +32,7 @@ public class Game2 implements Runnable {
 				Color.CYAN);
 		Assets.init();
 		gameState = new GameStates2();
-		// keyboard = ventana.getKeyboard();
+		keyboard = ventana.getKeyboard();
 
 	}
 
@@ -41,17 +42,38 @@ public class Game2 implements Runnable {
 		while (running) {
 			update();
 			draw();
+			boolean siHayPlayer = false;
+			int siHayBrick = 0;
+			for (Collisionable c : gameState.getColObjects()) {
+				if (c instanceof Brick) {
+					siHayBrick++;
+				}
+				if (c instanceof MyPlayer2) {
+					siHayPlayer = true;
+				}
+			}
+			if (!siHayPlayer) {
+				JOptionPane.showMessageDialog(null, "You lost", "You lost", JOptionPane.ERROR_MESSAGE);
+				break;
+			}
+			if (siHayBrick == 1) {
+				JOptionPane.showMessageDialog(null, "You win", "Win", JOptionPane.INFORMATION_MESSAGE);
+				break;
+			}
+
 			try {
 				Thread.sleep(17l);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		ventana.setVisible(false);
+		ventana.dispose();
 
 	}
 
 	public static void update() {
-		// keyboard.update();
+		keyboard.update();
 		gameState.update();
 	}
 

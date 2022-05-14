@@ -70,8 +70,8 @@ public class MyPlayer extends Player {
 	}
 
 	@Override
-	public void destroyPlayer() {
-		super.destroyPlayer();
+	public void destroy() {
+		super.destroy();
 		JOptionPane.showMessageDialog(null, "You died", "Game end", JOptionPane.ERROR_MESSAGE);
 	}
 

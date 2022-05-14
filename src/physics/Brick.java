@@ -67,20 +67,25 @@ public class Brick extends RectObj {
         super(x, y, weight, width, height, gameState);
     }
 
-    public void destroyBrick(ArrayList<Collisionable> colObjects) {
-        colObjects.remove(this);
+    // public void destroy(ArrayList<Collisionable> colObjects) {
+    // colObjects.remove(this);
+    // }
+
+    public void destroy() {
+        gameState.getColObjects().remove(this);
     }
 
     @Override
     public void update() {
-        for (Collisionable c : gameState.getColObjects()) {
+        for (int i = 0; i < gameState.getColObjects().size(); i++) {
+            Collisionable c = gameState.getColObjects().get(i);
             if (c.equals(this)) {
                 continue;
             }
 
             if (this.checkCollision(c)) {
                 if (this.breakObject(c)) {
-                    destroyBrick(gameState.getColObjects());
+                    destroy();
                 }
                 // } else {
                 // impact(this, c);
@@ -91,8 +96,12 @@ public class Brick extends RectObj {
                 // cM.move();
                 // }
                 // }
-
+                if (c.breakObject(this)) {
+                    c.destroy();
+                    continue;
+                }
             }
+
         }
 
     }

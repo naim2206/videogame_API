@@ -4,6 +4,7 @@
 package physics;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import game.GameState;
 
@@ -12,7 +13,7 @@ public abstract class CircleObj extends Collisionable {
     private double radius;
 
     public CircleObj(int x, int y, double weight, Material material, double velX,
-            double velY, double accX, double accY, double radius, GameState gameState) {
+            double velY, double accX, double accY, double radius, BufferedImage texture, GameState gameState) {
         super(x, y, weight, material, velX, velY, accX, accY, gameState);
 
         this.setRadius(radius);

@@ -17,7 +17,7 @@ public abstract class Player extends CircleObj implements Movable {
 
 	public Player(int x, int y, double weight, double velX, double velY, double accX, double accY,
 			double radius, BufferedImage texture, GameState gamestate) {
-		super(x, y, weight, Material.Wood, velX, velY, accX, accY, radius, gamestate);
+		super(x, y, weight, Material.Wood, velX, velY, accX, accY, radius, texture, gamestate);
 		this.texture = texture;
 		this.gameState = gamestate;
 		// TODO Auto-generated constructor stub
@@ -32,7 +32,7 @@ public abstract class Player extends CircleObj implements Movable {
 
 	public abstract void moveByPlayer();
 
-	public void destroyPlayer() {
+	public void destroy() {
 		gameState.getColObjects().remove(this);
 	}
 
@@ -67,17 +67,19 @@ public abstract class Player extends CircleObj implements Movable {
 		stop();
 
 		stop();
-		for (Collisionable c : gameState.getColObjects()) {
-
+		// for (Collisionable c : gameState.getColObjects()) {
+		for (int i = 0; i < gameState.getColObjects().size(); i++) {
+			Collisionable c = gameState.getColObjects().get(i);
 			if (c.equals(this)) {
 				continue;
 			}
 
 			if (this.checkCollision(c)) {
 				status = false;
+				// System.out.println("colision de player");
 
 				if (this.breakObject(c)) {
-					destroyPlayer();
+					destroy();
 					break;
 				} else {
 					impact(this, c);
@@ -98,6 +100,7 @@ public abstract class Player extends CircleObj implements Movable {
 						// this.setX(this.getX() + 1);
 						// c.setX(c.getX() - 1);
 						// }
+
 						if (this.getVelY() > 0)
 							this.setY(this.getY() - 1);
 						if (this.getVelY() < 0)
@@ -110,6 +113,10 @@ public abstract class Player extends CircleObj implements Movable {
 
 					}
 					this.move();
+				}
+				if (c.breakObject(this)) {
+					c.destroy();
+					continue;
 				}
 
 			}
