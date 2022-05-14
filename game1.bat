@@ -1,1 +1,0 @@
-java -jar .\game1.jar
