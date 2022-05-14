@@ -53,24 +53,6 @@ public class Game1 implements Runnable {
 
 		while (running) {
 
-			// lastTime = 0;
-			// now = System.nanoTime();
-			// delta += (now - lastTime)/TARGETTIME;
-			// time += (now-lastTime);
-			// lastTime = now;
-
-			// if(delta >= 1) {
-			// update();
-			// draw();
-			// delta--;
-			// frames++;
-			// }
-
-			// if(time >= 1000000000) {
-			// AVERAGEFPS = frames;
-			// frames = 0;
-			// time = 0;
-			// }
 			update();
 			draw();
 			boolean siHay = false;

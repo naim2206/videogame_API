@@ -33,7 +33,6 @@ public class GameStates2 extends GameState {
 	}
 
 	public void update() {
-
 		for (int i = 0; i < colObjects.size(); i++) {
 			if (colObjects.get(i) instanceof Bolder) {
 				if (colObjects.get(i).getX() > width) {
@@ -42,27 +41,10 @@ public class GameStates2 extends GameState {
 				if (colObjects.get(i).getX() < 0) {
 					colObjects.get(i).setX(width - 1);
 				}
-				// System.out.println(colObjects.get(i).getWeight());
 			}
 			colObjects.get(i).update();
 		}
-		// System.out.println();
 
 	}
 
-	public void draw(Graphics g) {
-
-		Graphics2D g2d = (Graphics2D) g;
-
-		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR); // Hace que
-																												// no se
-																												// pixelee
-																												// al
-																												// girar
-
-		for (int i = 0; i < colObjects.size(); i++) {
-			colObjects.get(i).draw(g);
-		}
-
-	}
 }

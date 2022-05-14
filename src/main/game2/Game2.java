@@ -77,57 +77,26 @@ public class Game2 implements Runnable {
 	}
 
 	private static void draw() {
-
 		bs = ventana.getBufferStrategy();
 		if (bs == null) {
 			ventana.createBufferStrategy(3);
 			return;
 		}
-
 		g = bs.getDrawGraphics();
-
-		// ------------------------
-
 		g.setColor(Color.black);
 		g.fillRect(0, 0, GameStates2.width, GameStates2.heigth);
-
 		gameState.draw(g);
-
-		/*
-		 * g.setColor(Color.white);
-		 * g.drawString("FPS = "+AVERAGEFPS, 0, 10);
-		 */
-		// ------------------------
-
 		g.dispose();
 		bs.show();
-
 	}
 
-	private void start() // Inicia el hilo
-	{
-
+	private void start() {
 		thread = new Thread(this);
 		thread.start();
-
 		running = true;
 	}
 
-	// private void stop() // Termina el hilo
-	// {
-	// try {
-	// thread.join();
-	// running = false;
-	// } catch (InterruptedException e) {
-	// e.printStackTrace();
-	// }
-
-	// }
-
 	public static void main(String[] args) {
-
 		new Game2().start();
-
 	}
-
 }
