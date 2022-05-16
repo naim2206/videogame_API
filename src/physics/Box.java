@@ -1,3 +1,8 @@
+/**
+ * Class for Box objects (Rectangular and movable)
+ * @author Naim Towfighian and Alejandro Casillas
+ */
+
 package physics;
 
 import java.awt.Graphics;
@@ -14,16 +19,18 @@ public class Box extends RectObj implements Movable {
     private BufferedImage texture = Assets.WoodBox;
 
     /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param material
-     * @param velX
-     * @param velY
-     * @param accX
-     * @param accY
-     * @param width
-     * @param height
+     * Constructor with all parameters
+     * 
+     * @param x         X position of the object
+     * @param y         Y position of the object
+     * @param weight    weight of the object
+     * @param velX      initial horizontal velocity
+     * @param velY      initial vertical velocity
+     * @param accX      initial horizontal acceleration
+     * @param accY      initial vertical acceleration
+     * @param width     width of the circle
+     * @param height    height of the circle
+     * @param gameState state of the game where object was created
      */
     public Box(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
             double width, double height, GameState gameState) {
@@ -32,21 +39,33 @@ public class Box extends RectObj implements Movable {
             this.setTexture(Assets.StoneBox);
     }
 
+    /**
+     * 
+     * @return texture
+     */
     public BufferedImage getTexture() {
         return texture;
     }
 
+    /**
+     * 
+     * @param texture
+     */
     public void setTexture(BufferedImage texture) {
         this.texture = texture;
     }
 
     /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param material
-     * @param width
-     * @param height
+     * Basic constructor with material
+     * defaults: in rest
+     * 
+     * @param x         X position of the object
+     * @param y         Y position of the object
+     * @param weight    weight of the object
+     * @param material  material of the object
+     * @param width     width of the circle
+     * @param height    height of the circle
+     * @param gameState state of the game where object was created
      */
     public Box(int x, int y, double weight, Material material, double width, double height, GameState gameState) {
         super(x, y, weight, material, width, height, gameState);
@@ -55,11 +74,15 @@ public class Box extends RectObj implements Movable {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param width
-     * @param height
+     ** Basic constructor
+     * defaults: material = Wood, in rest
+     * 
+     * @param x         X position of the object
+     * @param y         Y position of the object
+     * @param weight    weight of the object
+     * @param width     width of the rectangle
+     * @param height    height of the rectangle
+     * @param gameState state of the game where object was created
      */
     public Box(int x, int y, double weight, double width, double height, GameState gameState) {
         super(x, y, weight, width, height, gameState);
@@ -87,6 +110,7 @@ public class Box extends RectObj implements Movable {
         this.setAccX(getAccX() - 1);
     }
 
+    @Override
     public void destroy() {
         gameState.getColObjects().remove(this);
     }
@@ -99,14 +123,10 @@ public class Box extends RectObj implements Movable {
         for (int i = 0; i < gameState.getColObjects().size(); i++) {
             Collisionable c = gameState.getColObjects().get(i);
             if (c.equals(this)) {
-                // fall();
                 continue;
             }
-
             if (this.checkCollision(c)) {
-
                 if (this.breakObject(c)) {
-
                     destroy();
                     break;
                 } else {
@@ -120,44 +140,23 @@ public class Box extends RectObj implements Movable {
                             this.setX(this.getX() - 1);
                         if (this.getVelX() < 0)
                             this.setX(this.getX() + 1);
-                        // c.setY(c.getY() + 1);
-                        // Movable cm = (Movable) c;
-                        // cm.move();
                     }
                     this.move();
-
                 }
                 if (c.breakObject(this)) {
                     c.destroy();
                     continue;
                 }
-
             }
-
-            // fall();
-
         }
-
-        // this.move();
-
-        // stop();
-
     }
 
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-
         AffineTransform at = AffineTransform.getTranslateInstance((double) getX(),
                 (double) getY());
-        // AffineTransform at = AffineTransform.getTranslateInstance((double) getX() +
-        // getWidth() / 2,
-        // (double) getY() + getHeight() / 2);
-
         texture = Loader.resize(texture, (int) getWidth(), (int) getHeight());
-
         g2d.drawImage(texture, at, null);
-
     }
-
 }

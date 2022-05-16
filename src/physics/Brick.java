@@ -1,3 +1,7 @@
+/**
+ * Class for Brick objects (Rectangular and not movable)
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 package physics;
 
 import java.awt.Graphics;
@@ -14,40 +18,31 @@ public class Brick extends RectObj {
     private BufferedImage texture = Assets.WoodBrick;
 
     /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param material
-     * @param velX
-     * @param velY
-     * @param accX
-     * @param accY
-     * @param width
-     * @param height
+     * 
+     * @return texture
      */
-    public Brick(int x, int y, double weight, Material material, double velX, double velY, double accX, double accY,
-            double width, double height, GameState gamestate) {
-        super(x, y, weight, material, velX, velY, accX, accY, width, height, gamestate);
-        this.gameState = gamestate;
-        if (material == Material.Stone)
-            this.setTexture(Assets.StoneBrick);
-    }
-
     public BufferedImage getTexture() {
         return texture;
     }
 
+    /**
+     * 
+     * @param texture
+     */
     public void setTexture(BufferedImage texture) {
         this.texture = texture;
     }
 
     /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param material
-     * @param width
-     * @param height
+     * Basic with all parameters
+     * 
+     * @param x         X position of the object
+     * @param y         Y position of the object
+     * @param weight    weight of the object
+     * @param material  material of the object
+     * @param width     width of the circle
+     * @param height    height of the circle
+     * @param gameState state of the game where object was created
      */
     public Brick(int x, int y, double weight, Material material, double width, double height, GameState gameState) {
         super(x, y, weight, material, width, height, gameState);
@@ -56,20 +51,21 @@ public class Brick extends RectObj {
     }
 
     /**
-     * @param x
-     * @param y
-     * @param weight
-     * @param width
-     * @param height
+     * Basic constructor
+     * defaults: material = Wood
+     * 
+     * @param x         X position of the object
+     * @param y         Y position of the object
+     * @param weight    weight of the object
+     * @param width     width of the circle
+     * @param height    height of the circle
+     * @param gameState state of the game where object was created
      */
     public Brick(int x, int y, double weight, double width, double height, GameState gameState) {
         super(x, y, weight, width, height, gameState);
     }
 
-    // public void destroy(ArrayList<Collisionable> colObjects) {
-    // colObjects.remove(this);
-    // }
-
+    @Override
     public void destroy() {
         gameState.getColObjects().remove(this);
     }
@@ -81,42 +77,24 @@ public class Brick extends RectObj {
             if (c.equals(this)) {
                 continue;
             }
-
             if (this.checkCollision(c)) {
                 if (this.breakObject(c)) {
                     destroy();
                 }
-                // } else {
-                // impact(this, c);
-                // if (c instanceof Movable) {
-                // Movable cM = (Movable) c;
-                // cM.move();
-                // cM.move();
-                // cM.move();
-                // }
-                // }
                 if (c.breakObject(this)) {
                     c.destroy();
                     continue;
                 }
             }
-
         }
-
     }
 
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-
         AffineTransform at = AffineTransform.getTranslateInstance((double) getX(),
                 (double) getY());
-        // AffineTransform at = AffineTransform.getTranslateInstance((double) getX() +
-        // getWidth() / 2,
-        // (double) getY() + getHeight() / 2);
-
         texture = Loader.resize(texture, (int) getWidth(), (int) getHeight());
-
         g2d.drawImage(texture, at, null);
     }
 

@@ -1,3 +1,7 @@
+/**
+ * Class to render images for each type of collisionable object
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 package game;
 
 import java.awt.Color;
@@ -6,6 +10,7 @@ import graphics.Window;
 import java.awt.Graphics;
 
 public abstract class Game implements Runnable {
+
     protected static BufferStrategy bs;
     protected static Window ventana;
     protected static GameState gameState;
@@ -13,6 +18,12 @@ public abstract class Game implements Runnable {
     protected boolean running;
     protected static Graphics g;
 
+    /**
+     * Set parameters to render window
+     * 
+     * @param width
+     * @param height
+     */
     public static void draw(int width, int height) {
         bs = ventana.getBufferStrategy();
         if (bs == null) {
@@ -27,14 +38,23 @@ public abstract class Game implements Runnable {
         bs.show();
     }
 
-    public void start() // Inicia el hilo
-    {
+    /**
+     * Start Thread
+     * 
+     */
+    public void start() {
         thread = new Thread(this);
         thread.start();
         running = true;
     }
 
+    /**
+     * Update the game State
+     */
     public static void update() {
         gameState.update();
     }
+
+    @Override
+    public abstract void run();
 }

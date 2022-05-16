@@ -1,3 +1,7 @@
+/**
+ * Class to create the canvas
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 package graphics;
 
 import java.awt.Color;
@@ -5,12 +9,16 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 public class Canvas extends JPanel {
-	private static final long serialVersionUID = 1L; // Requisito de JPanel
+	private static final long serialVersionUID = 1L; // Obligatory for JPanel
 
+	/**
+	 * Creates focusable canvas (can have inputs from mouse/keyboard)
+	 * 
+	 * @param color background color
+	 */
 	public Canvas(Color color) {
-
-		this.setBackground(color); // Asigna el fondo que recibe del constructor
-		this.setFocusable(true); // Canvas puede ser objetivo de entradas de mouse/teclado
+		this.setBackground(color);
+		this.setFocusable(true);
 	}
 
 }
