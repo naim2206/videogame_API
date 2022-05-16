@@ -19,7 +19,6 @@ public class GameStates2 extends GameState {
 				colObjects.add(new Brick(i, j, -100, Material.Wood, 80, 80, this));
 			}
 		}
-		// colObjects.add(new Brick(0, 0, 1, Material.Wood, 80, 80, this));
 
 		this.player = new MyPlayer2(100, heigth - 100, 102, 0, 0, 0, 0, 50,
 				Assets.Player, this);

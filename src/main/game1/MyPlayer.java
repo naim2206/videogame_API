@@ -38,7 +38,6 @@ public class MyPlayer extends Player {
 
 		if (Keyboard.RIGHT && (MAX_SPEED_X > getVelX())) {
 			this.setVelX(getVelX() + 0.2);
-			// move();
 
 			this.setX((int) (getX() + 2));
 			return;
@@ -46,14 +45,12 @@ public class MyPlayer extends Player {
 
 		if (Keyboard.LEFT && (-MAX_SPEED_X < getVelX())) {
 			this.setVelX(getVelX() - 0.2);
-			// move();
 
 			this.setX((int) (getX() - 2));
 			return;
 		}
 
 		if (Keyboard.UP && (-MAX_SPEED_Y < getVelY())) {
-			// this.setVelX(0);
 			this.setVelY(getVelY() - 1.5);
 
 			this.setY((int) (getY() - 2));

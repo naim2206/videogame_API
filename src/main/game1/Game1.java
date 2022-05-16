@@ -11,16 +11,9 @@ import graphics.Window;
 import physics.Bolder;
 import physics.Collisionable;
 
-// public class Game1 implements Runnable {
 public class Game1 extends Game {
 
-	// private static GameState1 gameState;
 	private static Keyboard keyboard;
-	// private static Window ventana;
-	// private static BufferStrategy bs;
-	// private static Graphics g;
-	// private Thread thread;
-	// private boolean running;
 	private long time;
 	private long delta;
 
@@ -34,21 +27,10 @@ public class Game1 extends Game {
 		Assets.init();
 		gameState = new GameState1();
 		keyboard = ventana.getKeyboard();
-
 	}
 
 	@Override
 	public void run() {
-
-		// long now = 0; // Reg del tiempo
-		// long lastTime = System.nanoTime();
-		// int frames = 0;
-		// long time = 0;
-		// long delta = 0;
-		// int FPS = 60;
-		// int AVERAGEFPS = FPS;
-		// double TARGETTIME = 1000000000.0 / FPS; // 1s/FPS
-
 		Init();
 
 		while (running) {
@@ -91,24 +73,6 @@ public class Game1 extends Game {
 		keyboard.update();
 		gameState.update();
 	}
-
-	// public void start() // Inicia el hilo
-	// {
-	// thread = new Thread(this);
-	// thread.start();
-	// running = true;
-	// }
-
-	// private void stop() // Termina el hilo
-	// {
-	// try {
-	// thread.join();
-	// running = false;
-	// } catch (InterruptedException e) {
-	// e.printStackTrace();
-	// }
-
-	// }
 
 	public static void main(String[] args) {
 		new Game1().start();

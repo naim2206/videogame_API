@@ -11,15 +11,8 @@ import graphics.Window;
 import physics.Brick;
 import physics.Collisionable;
 
-// public class Game2 implements Runnable {
 public class Game2 extends Game {
-	// private static GameStates2 gameState;
 	private static Keyboard keyboard;
-	// private static Window ventana;
-	// private static BufferStrategy bs;
-	// private static Graphics g;
-	// private Thread thread;
-	// private boolean running;
 
 	public Game2() {
 		running = false;
