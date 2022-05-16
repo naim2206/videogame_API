@@ -1,7 +1,4 @@
-/**
- * Class to render images for each type of collisionable object
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package game;
 
 import java.awt.Color;
@@ -9,6 +6,11 @@ import java.awt.image.BufferStrategy;
 import graphics.Window;
 import java.awt.Graphics;
 
+/**
+ * Class to render images for each type of collisionable object
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public abstract class Game implements Runnable {
 
     protected static BufferStrategy bs;

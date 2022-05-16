@@ -1,11 +1,13 @@
-/**
- * Class to render images for each type of collisionable object
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package game;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Class to render images for each type of collisionable object
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Assets {
 
 	// Wood

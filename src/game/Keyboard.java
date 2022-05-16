@@ -1,12 +1,14 @@
-/**
- * Class to check if the keys are pressed
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Class to check if the keys are pressed
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Keyboard implements KeyListener {
 
 	private boolean[] keys = new boolean[256];

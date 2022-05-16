@@ -1,7 +1,4 @@
-/**
- * Class for Brick objects (Rectangular and not movable)
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package physics;
 
 import java.awt.Graphics;
@@ -13,6 +10,11 @@ import game.Assets;
 import game.GameState;
 import game.Loader;
 
+/**
+ * Class for Brick objects (Rectangular and not movable)
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Brick extends RectObj {
 
     private BufferedImage texture = Assets.WoodBrick;

@@ -1,9 +1,11 @@
-/**
- * Interface to make an object movable (to be able to change position)
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package physics;
 
+/**
+ * Interface to make an object movable (to be able to change position)
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public interface Movable {
 
     public static final double GRAVITY = .3; // .05

@@ -1,7 +1,4 @@
-/**
- * Class for Player objects (Circular, movable and wood)
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package physics;
 
 import java.awt.Graphics;
@@ -12,6 +9,11 @@ import java.awt.image.BufferedImage;
 import game.GameState;
 import game.Loader;
 
+/**
+ * Class for Player objects (Circular, movable and wood)
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public abstract class Player extends CircleObj implements Movable {
 
 	protected BufferedImage texture;

@@ -1,13 +1,15 @@
-/**
- * Class for circular objects
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package physics;
 
 import java.awt.image.BufferedImage;
 
 import game.GameState;
 
+/**
+ * Class for circular objects
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public abstract class CircleObj extends Collisionable {
 
     private double radius;

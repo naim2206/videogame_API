@@ -1,7 +1,3 @@
-/**
- * Main class for all Collisionable type objects
- * @author Naim Towfighian and Alejandro Casillas
- */
 
 package physics;
 
@@ -9,6 +5,11 @@ import java.awt.Graphics;
 
 import game.GameState;
 
+/**
+ * Main class for all Collisionable type objects
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public abstract class Collisionable {
     private int x;
     private int y;

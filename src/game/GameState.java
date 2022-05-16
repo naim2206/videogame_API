@@ -1,7 +1,4 @@
-/**
- * Class to render images for each type of collisionable object
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package game;
 
 import java.util.ArrayList;
@@ -12,6 +9,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+/**
+ * Class to render images for each type of collisionable object
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public abstract class GameState {
 
 	protected ArrayList<Collisionable> colObjects = new ArrayList<>();

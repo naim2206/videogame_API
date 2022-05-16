@@ -1,7 +1,3 @@
-/**
- * Class for Box objects (Rectangular and movable)
- * @author Naim Towfighian and Alejandro Casillas
- */
 
 package physics;
 
@@ -14,6 +10,11 @@ import game.Assets;
 import game.GameState;
 import game.Loader;
 
+/**
+ * Class for Box objects (Rectangular and movable)
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Box extends RectObj implements Movable {
 
     private BufferedImage texture = Assets.WoodBox;

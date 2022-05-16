@@ -1,7 +1,4 @@
-/**
- * Class to create the window and set the canvas
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package graphics;
 
 import java.awt.Color;
@@ -11,6 +8,11 @@ import javax.swing.JFrame;
 
 import game.Keyboard;
 
+/**
+ * Class to create the window and set the canvas
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Window extends JFrame {
 
 	private static int width;

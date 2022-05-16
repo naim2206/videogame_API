@@ -1,11 +1,13 @@
-/**
- * Class for rectangular objects
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package physics;
 
 import game.GameState;
 
+/**
+ * Class for rectangular objects
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public abstract class RectObj extends Collisionable {
     private double width;
     private double height;

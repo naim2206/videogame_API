@@ -1,7 +1,3 @@
-/**
- * Class for Bolder objects (circle, stone and movable)
- * @author Naim Towfighian and Alejandro Casillas
- */
 
 package physics;
 
@@ -14,6 +10,11 @@ import game.Assets;
 import game.GameState;
 import game.Loader;
 
+/**
+ * Class for Bolder objects (circle, stone and movable)
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Bolder extends CircleObj implements Movable {
 
     private BufferedImage texture = Assets.Boulder;

@@ -1,7 +1,4 @@
-/**
- * Class to load images to screen and set their sizes
- * @author Naim Towfighian and Alejandro Casillas
- */
+
 package game;
 
 import java.awt.Graphics2D;
@@ -11,6 +8,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Class to load images to screen and set their sizes
+ * 
+ * @author Naim Towfighian and Alejandro Casillas
+ */
 public class Loader {
 
 	/**
